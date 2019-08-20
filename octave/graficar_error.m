@@ -1,10 +1,10 @@
 %{
 Funcion para realizar la grafica de error, iteraciones vs | f(xk) |
-:param lista_iter: lista con todos los valores que deben graficarse en el eje x
-:param lista_xk: lista con todos los valores que deben graficarse en el eje y
+:param eje_x: lista con todos los valores que deben graficarse en el eje x
+:param eje_y: lista con todos los valores que deben graficarse en el eje y
 %}
 
-function graficarError(eje_x, lista_xk)
+function graficar_error(eje_x, eje_y)
     % Lista iteraciones en el eje x
     % Lista fxk en el eje y
     plot(eje_x, eje_y);           % Se realiza la grafica
