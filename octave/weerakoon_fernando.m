@@ -54,7 +54,7 @@ function [x_aprox, iter] = weerakoon_fernando(str_funcion, xk, tol, graph)
                 lista_iter = [lista_iter (itr)]
             end  % graph == 1
 
-            if abs(fxk) <= tol || itr == 10 % Se verifica la condicion de parada
+            if abs(fxk) <= tol % Se verifica la condicion de parada
                 break;
 
             else
