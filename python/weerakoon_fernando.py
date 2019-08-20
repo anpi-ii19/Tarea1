@@ -49,23 +49,23 @@ def weerakoon_fernando(str_funcion, xk, tol, graph=1):
                 break
 
             else:
-                # Se calcula el xk de la siguiente iteracion
-                numerador = 2 * fxk
+                # Se calcula el valor de xk en la derivada de f
+                df_xk = float(df.doit().subs({'x': xk}))
 
-                # Primera parte del denominador
-                denominador1 = float(df.doit().subs({'x': xk}))
+                if df_xk == 0:  # Se verifica para evitar division entre cero
+                    break
 
-                # Segunda parte del denominador
-                denominador2 = float(xk - fxk / (df.doit().subs({'x': xk})))
+                # Variable auxiliar para el calculo del denominador
+                denominador_aux = float(xk - fxk / df_xk)
 
                 # Se calcula el denominador entero
-                denominador = float(denominador1 + df.doit().subs({'x': denominador2}))
+                denominador = float(df_xk + df.doit().subs({'x': denominador_aux}))
 
                 # Si verifica denominador para evitar division entre cero
                 if denominador == 0:
                     break
 
-                xk = xk - (numerador / denominador)
+                xk = xk - ((2 * fxk) / denominador)
                 itr += 1
 
         if graph == 1:
