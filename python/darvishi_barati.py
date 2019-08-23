@@ -11,6 +11,7 @@ def darvishi_barati(str_funcion, xk, tol, graph=1):
     :param str_funcion: string con la funcion que se debe evaluar
     :param xk: valor de x inicial con el cual aplicar el metodo
     :param tol: tolerancia al fallo de debe tener el resultado final
+    :param graph: valor 0 para no graficar o 1 para graficar
     :returns: lista con dos elementos, xk calculado y numero iteraciones
     """
     # Se verifica el tipo de str_funcion
@@ -68,8 +69,8 @@ def darvishi_barati(str_funcion, xk, tol, graph=1):
             # Se calcula el numerador
             numerador = float(funcion.subs({'x': numerador_aux}))
 
+            # Se verifica que el nuevo xk no se indefina
             nuevo_xk = xk - (fxk / df_xk) - (numerador / df_xk)
-
             if isnan(nuevo_xk) or isinf(nuevo_xk):
                 print('Este metodo no es apto para la funcion ingresada')
                 break
