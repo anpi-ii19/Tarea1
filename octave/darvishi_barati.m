@@ -85,6 +85,7 @@ function [x_aprox, iter] = darvishi_barati(str_funcion, xk, tol, graph)
 
 end  % darvishi_barati(str_funcion, xk, tol, graph)
 
+
 %funcion1 = 'exp(2*x) - 10 - log(x/2)';
 %disp(funcion1);
 %[x_aprox1, iter1] = darvishi_barati(funcion1, 1, 10 ^ -5)

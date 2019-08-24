@@ -92,4 +92,3 @@ end  % steffensen(str_funcion, xk, tol, graph)
 %funcion2 = 'exp(x) - x^3 - x';
 %disp(funcion2);
 %[x_aprox2, iter2] = steffensen(funcion2, 3/4, 10^-5);
-
