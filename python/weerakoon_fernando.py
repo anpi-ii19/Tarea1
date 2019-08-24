@@ -26,6 +26,10 @@ def weerakoon_fernando(str_funcion, xk, tol, graph=1):
     if type(tol) != int and type(tol) != float:
         return "La tolerancia debe ser un numero"
 
+    # Se verifica que la tolerancia sea un numero positivo
+    if tol < 0:
+        return "tol debe ser un numero positivo"
+
     # Se verifica que el valor de graph sea uno o cero
     if graph != 1 and graph != 0:
         return "graph debe ser cero (desactivado) o uno (activado)"

@@ -15,8 +15,12 @@ class TestWeerakoonFernando(unittest.TestCase):
         self.assertEqual(weerakoon_fernando('x**2', 'a', 0, 0), er_x0)
 
         # Se prueba la restriccion en la tolerancia
-        er_tol = "La tolerancia debe ser un numero"
-        self.assertEqual(weerakoon_fernando('x**2', 0, True, 0), er_tol)
+        er_tol1 = "La tolerancia debe ser un numero"
+        self.assertEqual(weerakoon_fernando('x**2', 0, True, 0), er_tol1)
+
+        # Se pruena la restriccion en el valor de graph
+        er_tol2 = "tol debe ser un numero positivo"
+        self.assertEqual(weerakoon_fernando('x + x', 0, -1, 1), er_tol2)
 
         # Se prueba la restriccion en el valor de graph
         er_graph = 'graph debe ser cero (desactivado) o uno (activado)'
