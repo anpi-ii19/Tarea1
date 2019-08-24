@@ -80,7 +80,7 @@ def chun_kim(f, xk, tol, graph = 1):
     #Si termina el ciclo, grafica el error y retorna el resultado
     if graph == 1:
         graficar_error(lista_iter, lista_fxk)
-        return [xk, ite]
+    return [xk, ite]
 
 #Ejemplo de prueba para el método de Chun-Kim
 g = '(cos(2*x))**2 - (x**2)'
