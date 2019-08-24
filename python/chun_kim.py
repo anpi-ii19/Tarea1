@@ -82,7 +82,3 @@ def chun_kim(f, xk, tol, graph = 1):
         graficar_error(lista_iter, lista_fxk)
     # Se retorna el resultado final
     return [xk, ite]
-
-#Ejemplo de prueba para el método de Chun-Kim
-g = '(cos(2*x))**2 - (x**2)'
-print(chun_kim(g, 3/4, 10**-5, 1))
