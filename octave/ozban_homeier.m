@@ -44,76 +44,72 @@ function [x_aprox, iter] = ozban_homeier(func, xk, tol, graph)
     return
   endif
   
-  try
-    # Variable que contiene la conversión de la ecuación simbólica
-    ec = matlabFunction(sym(func))
-    # Variable que contiene la derivada de la función
-    dec = matlabFunction(diff(sym(func)))
+  % Variable que contiene la conversión de la ecuación simbólica
+  ec = matlabFunction(sym(func))
+  % Variable que contiene la derivada de la función
+  dec = matlabFunction(diff(sym(func)))
 
-    # Listas donde se guardan los valores para graficar el error
-    lista_fxk = []
-    lista_iter = []
+  % Listas donde se guardan los valores para graficar el error
+  lista_fxk = []
+  lista_iter = []
+  
+  % Se inicializa el contador de iteraciones
+  ite = 0
+  
+  while 1
+    % Variable que contiene la imagen de xk en la función
+    eval_ec = ec(xk)
     
-    # Se inicializa el contador de iteraciones
-    ite = 0
-    
-    while 1
-      # Variable que contiene la imagen de xk en la función
-      eval_ec = ec(xk)
-      
-      # Se guardan los valores para la grafica
-      if graph == 1
-        lista_fxk = [lista_fxk abs(eval_ec)]
-        lista_iter = [lista_iter (ite)]
-      endif
-      
-      # Verificar la condición de parada si la imagen del xk es menor o
-      # igual que la tolerancia
-      if abs(eval_ec) <= tol
-        break
-      # Si NO se cumple la condición de parada
-      else
-        # Variable que contiene la imagen de xk en la derivada de la función
-        eval_dec = dec(xk)
-        # Verificar que la imagen anterior no indefina el resultado
-        if eval_dec == 0
-          disp("La imagen de un xk en la derivada de la funcion se indefine")
-          % Se finaliza la ejecucion
-          return
-        endif
-        
-        # Variable que contiene el resultado del metodo de Newton-Raphson
-        nr = xk - (eval_ec / eval_dec)
-        # Variable que contiene la imagen del nr en la derivada de la función
-        eval_dec2 = dec(nr)
-        # Verificar que la imagen anterior no indefina el resultado
-        if eval_dec2 == 0
-          disp("La imagen del Newton-Raphson en la derivada se indefine")
-          % Se finaliza la ejecucion
-          return
-        endif
-          
-        # Se calcula el xk+1 para la siguiente iteración
-        xk = xk - (1/2) * ((eval_ec / eval_dec) + (eval_ec / eval_dec2))
-        # Se añade una iteración
-        ite = ite + 1
-      endif
-    endwhile
-    
-    # Si termina el ciclo, grafica el error y retorna el resultado
+    % Se guardan los valores para la grafica
     if graph == 1
-      graficar_error(lista_iter, lista_fxk)
+      lista_fxk = [lista_fxk abs(eval_ec)]
+      lista_iter = [lista_iter (ite)]
     endif
     
-    x_aprox =  xk
-    iter = ite
+    % Verificar la condición de parada si la imagen del xk es menor o
+    % igual que la tolerancia
+    if abs(eval_ec) <= tol
+      break
+    % Si NO se cumple la condición de parada
+    else
+      % Variable que contiene la imagen de xk en la derivada de la función
+      eval_dec = dec(xk)
+      % Verificar que la imagen anterior no indefina el resultado
+      if eval_dec == 0
+        disp("La imagen de un xk en la derivada de la funcion se indefine")
+        % Se finaliza la ejecucion
+        return
+      endif
+      
+      % Variable que contiene el resultado del metodo de Newton-Raphson
+      nr = xk - (eval_ec / eval_dec)
+      % Variable que contiene la imagen del nr en la derivada de la función
+      eval_dec2 = dec(nr)
+      % Verificar que la imagen anterior no indefina el resultado
+      if eval_dec2 == 0
+        disp("La imagen del Newton-Raphson en la derivada se indefine")
+        % Se finaliza la ejecucion
+        return
+      endif
+        
+      % Se calcula el xk+1 para la siguiente iteración
+      xk = xk - (1/2) * ((eval_ec / eval_dec) + (eval_ec / eval_dec2))
+      % Se añade una iteración
+      ite = ite + 1
+    endif
+  endwhile
+  
+  % Si termina el ciclo, grafica el error y retorna el resultado
+  if graph == 1
+    graficar_error(lista_iter, lista_fxk)
+  endif
+  
+  % Resultado
+  x_aprox =  xk
+  iter = ite
     
-  catch
-    disp("Sintaxis de la funcion es incorrecta")
-    return
-  end_try_catch
 endfunction
 
-# Ejemplo de prueba para el método de Ozban-Homeier
+% Ejemplo de prueba para el método de Ozban-Homeier
 g = '(cos(2*x))**2 - (x**2)'
 ozban_homeier(g, 3/4, 10**-5, 1)
