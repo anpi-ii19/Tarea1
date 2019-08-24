@@ -18,17 +18,17 @@ function [x_aprox, iter] = darvishi_barati(str_funcion, xk, tol, graph)
 
     % Se verifica el tipo de dato de xk
     if ~isa(xk, 'double')
-        error("xk debe ser un numero, no %s", class(xk))
+        error("xk debe ser un double, no %s", class(xk))
     end
 
     % Se verifica el tipo de dato de la tolerancia
     if ~isa(tol, 'double')
-        error("tol debe ser un numero, no un %s", class(tol))
+        error("tol debe ser un double, no un %s", class(tol))
     end
 
     % Se verifica que el valor de graph sea uno o cero
     if graph ~= 1 && graph ~= 0
-        error("graph debe ser 0 (desactivado) o 1 (activado), no %s", class(graph))
+        error("graph debe ser 0 (desactivado) o 1 (activado)")
     end
 
     funcion = matlabFunction(sym(str_funcion));   % Se obtiene la funcion
