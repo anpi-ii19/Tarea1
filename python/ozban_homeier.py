@@ -83,9 +83,5 @@ def ozban_homeier(f, xk, tol, graph=1):
     # Si termina el ciclo, grafica el error y retorna el resultado
     if graph == 1:
         graficar_error(lista_iter, lista_fxk)
-        return [xk, ite]
-
-
-#Ejemplo de prueba para el método de Ozban-Homeier
-g = '(cos(2*x))**2 - (x**2)'
-print(ozban_homeier(g, 3/4, 10**-5, 1))
+    # Se retorna el resultado final
+    return [xk, ite]
