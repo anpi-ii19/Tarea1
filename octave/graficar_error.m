@@ -8,5 +8,6 @@ function graficar_error(eje_x, eje_y)
     grid on;                      % Se activa la malla
     xlabel("iteracion")           % Se nombra el eje x
     ylabel("| f(xk) | ")          % Se nombra el eje y
+    title("Grafica de Iteracion vs | f(xk) |")
 
 end % End graficar_error
