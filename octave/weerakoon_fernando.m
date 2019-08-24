@@ -1,12 +1,12 @@
 pkg load symbolic
 
-% Metodo de Steffensen para encontrar el cero de una funcion
+% Metodo de Weerakoon-Fernando para encontrar el cero de una funcion
 % :param str_funcion: string con la funcion que se debe evaluar
 % :param xk: valor de x inicial con el cual aplicar el metodo
 % :param tol: tolerancia al fallo de debe tener el resultado final
 % :param graph: valor 0 para no graficar o 1 para graficar
 % :returns: xk calculado y numero iteraciones
-function [x_aprox, iter] = steffensen(str_funcion, xk, tol, graph)
+function [x_aprox, iter] = weerakoon_fernando(str_funcion, xk, tol, graph)
     if nargin == 3  % Si el numero de argumentos es igual a 3
         graph = 1   % Se declara con el valor por defecto
     end
@@ -91,12 +91,12 @@ function [x_aprox, iter] = steffensen(str_funcion, xk, tol, graph)
     x_aprox = xk
     iter = itr
 
-end  % steffensen(str_funcion, xk, tol, graph)
+end  % weerakoon_fernando(str_funcion, xk, tol, graph)
 
 %funcion1 = 'cos(2*x)^2 - x^2';
 %disp(funcion1);
-%[x_aprox1, iter1] = steffensen(funcion1, 3/4, 10^-5);
+%[x_aprox1, iter1] = weerakoon_fernando(funcion1, 3/4, 10^-5);
 
 %funcion2 = 'exp(x) - x^3 - x';
 %disp(funcion2);
-%[x_aprox2, iter2] = steffensen(funcion2, 3/4, 10^-5);
+%[x_aprox2, iter2] = weerakoon_fernando(funcion2, 3/4, 10^-5);
