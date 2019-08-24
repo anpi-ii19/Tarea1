@@ -1,4 +1,4 @@
-%Carga del paquete simb髄ico
+%Carga del paquete simb贸lico
 pkg load symbolic
 
 
@@ -54,9 +54,9 @@ function [x_aprox, iter] = m8(func, xk, y, tol, graph)
   endif
   
   
-  % Variable que contiene la conversi髇 de la ecuaci髇 simb髄ica
+  % Variable que contiene la conversi贸n de la ecuaci贸n simb贸lica
   ec = matlabFunction(sym(func))
-  % Variable que contiene la derivada de la funci髇
+  % Variable que contiene la derivada de la funci贸n
   dec = matlabFunction(diff(sym(func)))
 
   % Listas donde se guardan los valores para graficar el error
@@ -67,7 +67,7 @@ function [x_aprox, iter] = m8(func, xk, y, tol, graph)
   ite = 0
   
   while 1
-    % Variable que contiene la imagen de xk en la funci髇
+    % Variable que contiene la imagen de xk en la funci贸n
     eval_ec = ec(xk)
     
     % Se guardan los valores para la grafica
@@ -76,13 +76,13 @@ function [x_aprox, iter] = m8(func, xk, y, tol, graph)
       lista_iter = [lista_iter (ite)]
     endif
     
-    % Verificar la condici髇 de parada si la imagen del xk es menor o
+    % Verificar la condici贸n de parada si la imagen del xk es menor o
     % igual que la tolerancia
     if abs(eval_ec) <= tol
       break
-    % Si NO se cumple la condici髇 de parada
+    % Si NO se cumple la condici贸n de parada
     else
-      % Se calcula el wk y su imagen en la funci髇
+      % Se calcula el wk y su imagen en la funci贸n
       wk = xk + (y * eval_ec)
       eval_wec = ec(wk)
 
@@ -92,11 +92,11 @@ function [x_aprox, iter] = m8(func, xk, y, tol, graph)
           return
       endif
           
-      % Se calcula el yk y su imagen en la funci髇
+      % Se calcula el yk y su imagen en la funci贸n
       yk = xk - (y * (eval_ec ** 2 / (eval_wec - eval_ec)))
       eval_yec = ec(yk)
 
-      % Se calcula el zk y su imagen en la funci髇
+      % Se calcula el zk y su imagen en la funci贸n
       z1 = ((wk - yk) / ((xk - yk) * y))
       z2 = ((xk - yk) / ((wk - yk) * y * eval_ec)) * eval_wec
       z3 = ((wk + xk - 2 * yk) / ((xk - yk) * (wk - yk))) * eval_yec
@@ -110,7 +110,7 @@ function [x_aprox, iter] = m8(func, xk, y, tol, graph)
       zk = yk - (eval_yec / (z1 - z2 - z3))
       eval_zec = ec(zk)
 
-      % Se calcula el xk+1 para la siguiente iteraci髇
+      % Se calcula el xk+1 para la siguiente iteraci贸n
       h1 = (((yk - zk) * (wk - zk))) / ((xk - zk) * y * (xk - yk))
       h2 = ((((yk - zk) * (xk - zk)) / ((wk - zk) * (wk - yk) * (wk * xk)))
             * eval_wec)
@@ -125,9 +125,9 @@ function [x_aprox, iter] = m8(func, xk, y, tol, graph)
           return
       endif
       
-      % Se calcula el xk+1 para la siguiente iteraci髇
+      % Se calcula el xk+1 para la siguiente iteraci贸n
       xk = zk - (eval_zec / (h1 + h2 + h3 + h4))
-      % Se a馻de una iteraci髇
+      % Se a帽ade una iteraci贸n
       ite = ite + 1
     endif
   endwhile
@@ -142,6 +142,6 @@ function [x_aprox, iter] = m8(func, xk, y, tol, graph)
     
 endfunction
 
-% Ejemplo de prueba para el m閠odo M8
+% Ejemplo de prueba para el m茅todo M8
 g = '(cos(2*x))**2 - (x**2)'
-print(m8(g, 3/4, 1, 10**-5, 1))
+m8(g, 3/4, 1, 10**-5, 1)
