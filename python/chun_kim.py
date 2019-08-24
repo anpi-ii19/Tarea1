@@ -13,19 +13,19 @@ def chun_kim(f, xk, tol, graph = 1):
     :returns: lista con dos elementos, xk calculado y numero iteraciones
     """
 
-    # Verificar que la función sea un string
+    # Verificar el tipo de dato de la función
     if type(f) != str:
-        return "La función debe ser un string"
+        return "La funcion debe ser un string"
 
-    # Verificar que x0 sea un float
-    if type(xk) != float:
-        return "El x0 debe ser un número"
+    # Verificar el tipo de dato de xk
+    if type(xk) != float and type(xk) != int:
+        return "El xk debe ser un numero"
 
-    # Verificar que tol sea un float
-    if type(tol) != float:
-        return "La tol deber ser un número"
+    # Verificar el tipo de dato de tol
+    if type(tol) != float and type(tol) != int:
+        return "La tol debe ser un numero"
 
-    # Verificar que el valor de graph
+    # Verificar que el valor de graph sea 0 o 1
     if graph != 1 and graph != 0:
         return "La graph debe ser 0 (desactivado) o 1 (activado)"
 
@@ -33,7 +33,7 @@ def chun_kim(f, xk, tol, graph = 1):
         # Variable que contiene la conversión de la ecuación simbólica
         ec = sympify(f)
     except:
-        return "Sintaxis de la función es incorrecta"
+        return "Sintaxis de la funcion es incorrecta"
 
     # Listas donde se guardan los valores para graficar el error
     lista_fxk = []
