@@ -77,9 +77,10 @@ def chun_kim(f, xk, tol, graph = 1):
             # Se añade una iteración
             ite += 1
 
-    #Si termina el ciclo, grafica el error y retorna el resultado
+    # Si termina el ciclo, grafica el error y retorna el resultado
     if graph == 1:
         graficar_error(lista_iter, lista_fxk)
+    # Se retorna el resultado final
     return [xk, ite]
 
 #Ejemplo de prueba para el método de Chun-Kim
