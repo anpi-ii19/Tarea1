@@ -98,11 +98,8 @@ def m8(f, xk, y, tol, graph=1):
             # Se añade una iteración
             ite += 1
 
-    #Si termina el ciclo, grafica el error y retorna el resultado
+    # Si termina el ciclo, grafica el error y retorna el resultado
     if graph == 1:
         graficar_error(lista_iter, lista_fxk)
-        return [xk, ite]
-
-#Ejemplo de prueba para el método M8
-g = '(cos(2*x))**2 - (x**2)'
-print(m8(g, 3/4, 1, 10**-5, 1))
+    # Se retorna el resultado final
+    return [xk, ite]
