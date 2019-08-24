@@ -26,6 +26,11 @@ function [x_aprox, iter] = steffensen(str_funcion, xk, tol, graph)
         error("tol debe ser un double, no un %s", class(tol))
     end
 
+    % Se verifica que la tolerancia sea un numero positivo
+    if tol < 0
+        error("tol debe ser un numero positivo")
+    end
+
     % Se verifica que el valor de graph sea uno o cero
     if graph ~= 1 && graph ~= 0
         error("graph debe ser 0 (desactivado) o 1 (activado)")
