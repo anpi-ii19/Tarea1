@@ -156,7 +156,8 @@ def sne_fd_2(f, xk, y, tol, graph=1):
 def sne_fd_3(f, xk, tol, graph=1):
     """
     Metodo IODF (Improved Ostrowski's method free from derivatives)
-    Obtenido de Steffensentypemethodsforsolvingnonlinearequations
+    Obtenido de Steffensen type methods for solving nonlinear equations
+    (Cordero et all, 2010) ecuación (5)
     :param f: string con la funcion que se debe evaluar
     :param xk: valor de x inicial con el cual aplicar el metodo
     :param tol: tolerancia al fallo de debe tener el resultado final
