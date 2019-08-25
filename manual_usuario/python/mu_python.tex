@@ -1,0 +1,272 @@
+\documentclass[12pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath,multicol,enumerate}
+\usepackage{amsfonts}
+\usepackage{listings}
+\usepackage{wrapfig}
+\usepackage{cite}
+
+%%%%% Formato REVISTA DE MATEMÁTICA: TEORÍA Y APLICACIONES%%%%%%%
+\topmargin=-2cm\textheight=23cm\textwidth=19cm
+\oddsidemargin=-1cm\evensidemargin=-1cm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\parskip=0.25cm
+\parindent=0mm
+
+\renewcommand{\figurename}{Figura}
+
+\usepackage[dvips]{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+%Utilizamos el paquete para incorporar graficos postcript
+
+
+%\usepackage{amssymb}
+\usepackage[psamsfonts]{amssymb} %paquetes para los simbolos matematicos
+\usepackage{latexsym}
+
+\usepackage{xcolor} %paquetes para los colores
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+
+\renewcommand{\contentsname}{Tabla de Contenidos}
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+\bibliographystyle{ieeetr}
+
+\lhead[\thepage]{SolNE - Manual de usuario}
+\chead[]{}
+\rhead[SolNE - Manual de usuario \leftmark]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\pagestyle{fancy}
+
+\lstset{
+showstringspaces=false
+frame = single, 
+language=Python
+}
+
+\begin{document}
+
+
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE Análisis Numérico Para Ingeniería \par}
+	\vspace{2cm}
+	\includegraphics[width=16cm]{MarcaTECRGB}\par\vspace{2cm}
+	{\scshape\Large SolNE\par}
+	\vspace{0.5cm}
+	{\scshape\LARGE Python \par}
+	\vspace{3cm}
+	{\huge\bfseries Manual de Usuario\par}
+	\vspace{3cm}
+	{\Large\itshape Arturo Córdoba Villalobos\par}
+	{\Large\itshape Fabián González Araya\par}
+	{\Large\itshape Gustavo Segura Umaña\par}
+	{\Large\itshape Joseph Vargas Blanco\par}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage	
+
+\section{¿Qué es SolNE?}
+SolNE es un paquete cuyo objetivo es la obtención de una aproximación a la solución de una ecuación no lineal de la forma $f(x) = 0$. Es una biblioteca para Python que provee doce métodos iterativos diferentes, seis que emplean el uso de derivadas y seis que no utilizan derivadas. Aquellos métodos que incluyen el cálculo de derivadas empiezan con el prefijo $sne\_ud\_\#$ (\textit{solving nonlinear equation - using derivative}), y los que no empiezan con el prefijo $sne\_fg\_\#$ (\textit{solving nonlinear equation - free derivative}), donde $\#$ es el número de método.
+
+\section{Instalación}
+En este  manual se muestran los pasos para la instalación de SolNE en Ubuntu. En cada sección se muestran los comandos que deben ser ejecutados en la consola para la instalación de cada dependencia específica. Los comandos se encuentran en un orden específico de ejecución, por lo que se recomienda empezar por la sección 2.1.1.
+
+\subsection{Requisitos}
+Este paquete utiliza Sympy para el uso de matemática simbólica, NumPy para verificar que el resultado no sea NaN o infinito, y Matplotlib para realizar las gráficas de error.
+
+\subsubsection{Python3}
+\begin{lstlisting}[language=bash]
+  $ sudo apt-get install python3
+\end{lstlisting}
+
+\subsubsection{Python3 Pip}
+\begin{lstlisting}[language=bash]
+  $ sudo apt-get install python3-pip
+\end{lstlisting}
+
+\subsubsection{SymPy}
+\begin{lstlisting}[language=bash]
+  $ sudo pip3 install sympy
+\end{lstlisting}
+
+\subsubsection{NumPy}
+\begin{lstlisting}[language=bash]
+  $ sudo pip3 install numpy
+\end{lstlisting}
+
+\subsubsection{Matplotlib}
+\begin{lstlisting}[language=bash]
+  $ sudo pip3 install matplotlib
+\end{lstlisting}
+
+\subsection{Instalación SolNE}
+
+\section{Cómo utilizar SolNE}\label{uso}
+
+*********Indicar como importar el paquete************
+
+Como se indicó anteriormente, aquellos métodos que incluyen el cálculo de derivadas empiezan con el prefijo $sne\_ud\_\#$ (\textit{solving nonlinear equation - using derivative}), y los que no empiezan con el prefijo $sne\_fg\_\#$ (\textit{solving nonlinear equation - free derivative}), donde $\#$ es el número de método.\newline
+
+De manera general, cada método recibe los siguientes argumentos:
+\begin{itemize}
+	\item $str\_funcion$: string que representa la función $f(x)$. Se debe utilizar la sintaxis definida por Python para el uso de operadores matemáticos, como el de la suma ($+$), resta($-$), multiplicación ($*$), división ($/$) y exponente ($**$). En el caso de funciones trigonométricas o exponenciales ir al siguiente enlace para ver la sintaxis: \url{https://docs.python.org/3/library/math.html}.
+	\item Valores iniciales ($x_{0}, x_{1}, ..., x_{n}$), los cuales son necesarios para que el método funcione.
+	\item Tolerancia $tol > 0$, determina el criterio de parada para cada método iterativo, el cual está definido por $|f(x_{k})| < tol$, donde $x_{k}$ es la $k$-ésima iteración que aproxima la raíz de la ecuación $f(x) = 0$.
+	\item $graph$: este parámetro permite mostrar la gráfica de iteraciones ($k$) versus errores ($|f(x_{k})|$) del método iterativo. Si $graf = 0$, entonces no se mostrará la gráfica. Si $graf = 1$ o se omite el parámetro $graf$, entonces sí se mostrará la gráfica.
+\end{itemize}
+
+De manera general, cada método retorna los siguiente:
+\begin{itemize}
+	\item $x_{aprox}$, el cual es la aproximación a la solución de la ecuación $f(x) = 0$.
+	\item $iter$, el cual representa el número de iteraciones que se utilizaron para aproximar el cero de la función con una tolerancia $tol$.
+	\item Si $graf = 1$ o se omite el parámetro $graf$, entonces se mostrará la gráfica de iteraciones ($k$) versus errores ($|f(x)|$) del método iterativo.
+\end{itemize}
+
+Cada método se detiene si el denominador respectivo es cero (para evitar la división entre cero), si el valor $x_{aprox}$ toma un valor infito o NaN en alguna de las iteraciones. En estos casos, cada método retorna los resultados obtenidos hasta ese momento.
+
+\subsection{Función sne\_ud\_1}
+Esta función implementa el método iterativo de Weerakoon-Fernando, el cual fue tomado de \cite{kiran2015performance}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un solo valor inicial $x_{0}$. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_ud_1(funcion1, 5 / 7, 10 ** -5, 1)
+  [0.5149332928105104, 2]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_ud_1(funcion2, 3 / 4, 10 ** -5, 0)
+  [1.1461932206137209, 3]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_ud_1(funcion3, 1 / 5, 10 ** -5, 0)
+  [0.7390851157170514, 2]
+\end{lstlisting}
+\end{minipage}
+
+\begin{figure}
+  \includegraphics[width=12cm]{wf-1.png}
+  \centering
+  \caption{Gráfica obtenida al evualuar la funcion1 utlizando sne\_ud\_1.}
+  \label{fig:wf-1}
+\end{figure}
+
+\subsection{Función sne\_ud\_2}
+Esta función implementa el método iterativo de Chun-Kim, el cual fue tomado de \cite{kiran2015performance}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un solo valor inicial $x_{0}$. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_ud_2(funcion1, 5 / 7, 10 ** -5, 1)
+  [0.5149331280095247, 2]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_ud_2(funcion2, 3 / 4, 10 ** -5, 0)
+  [1.1461932206205268, 4]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_ud_2(funcion3, 1 / 5, 10 ** -5, 0)
+  [0.739081081760118, 2]
+  
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Función sne\_ud\_3}
+Esta función implementa el método iterativo de Özban-Homeier, el cual fue tomado de \cite{kiran2015performance}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un solo valor inicial $x_{0}$. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_ud_3(funcion1, 5 / 7, 10 ** -5, 1)
+  [0.5149340851889033, 2]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_ud_3(funcion2, 3 / 4, 10 ** -5, 0)
+  [1.146193224080175, 2]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_ud_3(funcion3, 1 / 5, 10 ** -5, 0)
+  [0.7390851092490082, 2]
+  
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Función sne\_fd\_1}
+Esta función implementa el método iterativo de Steffensen, el cual fue tomado de \cite{cordero2011class}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un solo valor inicial $x_{0}$. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_fd_1(funcion1, 5 / 7, 10 ** -5, 1)
+  [0.5149332651840688, 3]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_fd_1(funcion2, 3 / 4, 10 ** -5, 0)
+  [1.146196310975045, 9]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_fd_1(funcion3, 1 / 5, 10 ** -5, 0)
+  [0.739085129255462, 3]
+  
+\end{lstlisting}
+\end{minipage}
+
+\begin{figure}
+  \includegraphics[width=12cm]{stf-1.png}
+  \centering
+  \caption{Gráfica obtenida al evualuar la funcion1 utlizando sne\_fd\_1.}
+  \label{fig:stf-1}
+\end{figure}
+
+\subsection{Función sne\_fd\_2}
+Esta función implementa el método iterativo de Darvishi-Barati, el cual fue tomado de \cite{kiran2015performance}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un solo valor inicial $x_{0}$. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_fd_2(funcion1, 5 / 7, 10 ** -5, 1)
+  [0.514935456178876, 2]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_fd_2(funcion2, 3 / 4, 10 ** -5, 0)
+  [1.146190173485739, 3]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_fd_2(funcion3, 1 / 5, 10 ** -5, 0)
+  [0.7390851332151605, 3]
+  
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Función sne\_fd\_3}
+Esta función implementa el método iterativo M8, el cual fue tomado de \cite{bakhtiari2017widening}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con dos valores iniciales $x_{0}$ y $x_{1}$. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_fd_3(funcion1, 5 / 7, 1, 10 ** -5, 0)
+  [0.5149332646611062, 2]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_fd_3(funcion2, 3 / 4, 1, 10 ** -5, 0)
+  [1.146193220622202, 2]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_fd_3(funcion3, 1 / 5, 1, 10 ** -5, 0)
+  [0.7390851332151646, 2]
+  
+\end{lstlisting}
+\end{minipage}
+
+
+\section{Referencias Bibliográficas}
+\nocite{*}
+\bibliography{biblio}
+
+\end{document}
+
+% ü, é, á, í, ó, ú, ñ, Ñ, ¿, ¡
