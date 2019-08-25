@@ -1,4 +1,3 @@
-import SolNE
 from sympy import sympify
 from numpy import isnan, isinf
 from .graficar_error import graficar_error
