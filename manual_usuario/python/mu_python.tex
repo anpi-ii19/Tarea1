@@ -195,6 +195,26 @@ Esta función implementa el método iterativo de Özban-Homeier, el cual fue tomado
 \end{lstlisting}
 \end{minipage}
 
+\subsection{Función sne\_ud\_4}
+Esta función implementa el método iterativo de Darvishi-Barati, el cual fue tomado de \cite{kiran2015performance}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un solo valor inicial $x_{0}$. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_ud_4(funcion1, 5 / 7, 10 ** -5, 1)
+  [0.514935456178876, 2]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_ud_4(funcion2, 3 / 4, 10 ** -5, 0)
+  [1.146190173485739, 3]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_ud_4(funcion3, 1 / 5, 10 ** -5, 0)
+  [0.7390851332151605, 3]
+  
+\end{lstlisting}
+\end{minipage}
+
 \subsection{Función sne\_fd\_1}
 Esta función implementa el método iterativo de Steffensen, el cual fue tomado de \cite{cordero2011class}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un solo valor inicial $x_{0}$. A continuación se muestran algunos ejemplos de uso.
 
@@ -223,40 +243,20 @@ Esta función implementa el método iterativo de Steffensen, el cual fue tomado de
 \end{figure}
 
 \subsection{Función sne\_fd\_2}
-Esta función implementa el método iterativo de Darvishi-Barati, el cual fue tomado de \cite{kiran2015performance}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un solo valor inicial $x_{0}$. A continuación se muestran algunos ejemplos de uso.
-
-\begin{minipage}{\linewidth}
-\begin{lstlisting}[frame = single]
-  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
-  >>> sne_fd_2(funcion1, 5 / 7, 10 ** -5, 1)
-  [0.514935456178876, 2]
-  
-  >>> funcion2 = 'exp(x) - x - 2'
-  >>> sne_fd_2(funcion2, 3 / 4, 10 ** -5, 0)
-  [1.146190173485739, 3]
-  
-  >>> funcion3 = 'cos(x) - x'
-  >>> sne_fd_2(funcion3, 1 / 5, 10 ** -5, 0)
-  [0.7390851332151605, 3]
-  
-\end{lstlisting}
-\end{minipage}
-
-\subsection{Función sne\_fd\_3}
 Esta función implementa el método iterativo M8, el cual fue tomado de \cite{bakhtiari2017widening}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con dos valores iniciales $x_{0}$ y $x_{1}$. A continuación se muestran algunos ejemplos de uso.
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame = single]
   >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
-  >>> sne_fd_3(funcion1, 5 / 7, 1, 10 ** -5, 0)
+  >>> sne_fd_2(funcion1, 5 / 7, 1, 10 ** -5, 0)
   [0.5149332646611062, 2]
   
   >>> funcion2 = 'exp(x) - x - 2'
-  >>> sne_fd_3(funcion2, 3 / 4, 1, 10 ** -5, 0)
+  >>> sne_fd_2(funcion2, 3 / 4, 1, 10 ** -5, 0)
   [1.146193220622202, 2]
   
   >>> funcion3 = 'cos(x) - x'
-  >>> sne_fd_3(funcion3, 1 / 5, 1, 10 ** -5, 0)
+  >>> sne_fd_2(funcion3, 1 / 5, 1, 10 ** -5, 0)
   [0.7390851332151646, 2]
   
 \end{lstlisting}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.8.14)  24 AUG 2019 23:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.8.14)  24 AUG 2019 23:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -524,27 +524,27 @@ File: wf-1.png Graphic file (type png)
 <use wf-1.png>
 Package pdftex.def Info: wf-1.png  used on input line 152.
 (pdftex.def)             Requested size: 341.43306pt x 256.0806pt.
- [4 <./wf-1.png (PNG copy)>]
-<stf-1.png, id=157, 642.4pt x 481.8pt>
+ [4 <./wf-1.png (PNG copy)>] [5]
+<stf-1.png, id=187, 642.4pt x 481.8pt>
 File: stf-1.png Graphic file (type png)
 <use stf-1.png>
-Package pdftex.def Info: stf-1.png  used on input line 219.
+Package pdftex.def Info: stf-1.png  used on input line 239.
 (pdftex.def)             Requested size: 341.43306pt x 256.0806pt.
- [5] [6 <./stf-1.png (PNG copy)>] (./mu_python.bbl)
+ [6] (./mu_python.bbl)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 270.
- [7]
+ [7 <./stf-1.png (PNG copy)>]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 270.
  (./mu_python.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 270.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 270.
 Package rerunfilecheck Info: File `mu_python.out' has not changed.
-(rerunfilecheck)             Checksum: 4990EAADCA4F00103AD4AEF90837C595;1138.
+(rerunfilecheck)             Checksum: EDC9BB529FB14F433EB1D453D17CCAD3;1138.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 270.
  ) 
 Here is how much of TeX's memory you used:
  9244 strings out of 494518
  127549 string characters out of 6176313
- 440168 words of memory out of 5000000
+ 441168 words of memory out of 5000000
  12668 multiletter control sequences out of 15000+600000
  12493 words of font info for 48 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -558,7 +558,7 @@ t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmtt12.pfb>
-Output written on mu_python.pdf (8 pages, 186597 bytes).
+Output written on mu_python.pdf (8 pages, 186325 bytes).
 PDF statistics:
  295 PDF objects out of 1000 (max. 8388607)
  269 compressed objects within 3 object streams
