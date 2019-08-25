@@ -1,3 +1,4 @@
+import SolNE
 from sympy import sympify
 from numpy import isnan, isinf
 from .graficar_error import graficar_error
@@ -39,7 +40,8 @@ def sne_fd_1(str_funcion, xk, tol, graph=1):
 
         else:
             # Variable auxiliar para el calculo del denominador
-            denominador_aux = float(funcion.subs({'x': (xk + fxk)}))  # Se evalua la funcion
+            denominador_aux = float(funcion.subs(
+                {'x': (xk + fxk)}))  # Se evalua la funcion
 
             # Se calcula el denominador entero
             denominador = denominador_aux - fxk
@@ -144,6 +146,73 @@ def sne_fd_2(f, xk, y, tol, graph=1):
             xk = zk - (eval_zec / (h1 + h2 + h3 + h4))
             # Se añade una iteración
             ite += 1
+
+    # Si termina el ciclo, grafica el error y retorna el resultado
+    if graph == 1:
+        graficar_error(lista_iter, lista_fxk)
+    # Se retorna el resultado final
+    return [xk, ite]
+
+
+def sne_fd_3(f, xk, tol, graph=1):
+    """
+    Metodo IODF (Improved Ostrowski's method free from derivatives)
+    Obtenido de Steffensentypemethodsforsolvingnonlinearequations
+    :param f: string con la funcion que se debe evaluar
+    :param xk: valor de x inicial con el cual aplicar el metodo
+    :param tol: tolerancia al fallo de debe tener el resultado final
+    :param graph: valor 0 para no graficar o 1 para graficar
+    :returns: lista con dos elementos, xk calculado y numero iteraciones
+    """
+    # Se verifican las restricciones generales en los argumentos
+    restr = ver_restr_fd(f, xk, tol, graph)
+    if restr != 0:  # Si es diferente de cero significa un error
+        return restr
+
+    # Variable que contiene la conversión de la ecuación simbólica
+    ec = sympify(f)
+
+    # Listas donde se guardan los valores para graficar el error
+    lista_fxk = []
+    lista_iter = []
+
+    # Se inicializa el contador de iteraciones
+    ite = 0
+
+    while 1:
+        # Variable que contiene la imagen de xk en la función
+        fxk = float(ec.subs('x', xk))
+
+        # Se guardan los valores para la grafica
+        if graph == 1:
+            lista_fxk += [abs(fxk)]
+            lista_iter += [ite]
+
+        # Verificar la condición de parada si la imagen del xk es menor o
+        # igual que la tolerancia
+        if abs(fxk) <= tol:
+            break
+
+        # f(xk + f(xk))
+        f_aux_1 = xk + fxk
+        f_aux_1 = float(ec.subs('x', f_aux_1))
+
+        # f(xk - f(xk))
+        f_aux_2 = xk - fxk
+        f_aux_2 = float(ec.subs('x', f_aux_2))
+
+        # Calcular yk
+        yk = xk - ((2*(fxk**2)) / (f_aux_1 - f_aux_2))
+        fyk = float(ec.subs('x', yk))
+
+        # Calcular zk
+        zk = yk - ((yk - xk)/(2*fyk - fxk)) * fyk
+        fzk = float(ec.subs('x', zk))
+
+        # Calcular nuevo xk+1 para la siguiente iteración
+        xk = zk - ((yk - xk) / (2*fyk - fxk)) * fzk
+        # Se añade una iteración
+        ite += 1
 
     # Si termina el ciclo, grafica el error y retorna el resultado
     if graph == 1:

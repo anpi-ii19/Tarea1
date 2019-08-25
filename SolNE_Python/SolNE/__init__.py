@@ -9,3 +9,4 @@ from .ud import sne_ud_6
 # Se importan los metodos que no utilizan derivadas
 from .fd import sne_fd_1
 from .fd import sne_fd_2
+from .fd import sne_fd_3
