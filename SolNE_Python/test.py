@@ -17,6 +17,9 @@ class TestSolNE(unittest.TestCase):
     FUNCION4 = '(1 + x) * sin(x) - 1'
 
     def test_sne_ud_1(self):
+        """
+        Metodo encargado de realizar el test de sne_ud_1
+        """
         # Se prueba la restriccion en el formato de la funcion
         self.assertEqual(sne_ud_1(0, 0, 0, 2), self.ER_STR_FUNCION)
 
@@ -52,6 +55,9 @@ class TestSolNE(unittest.TestCase):
         self.assertEqual(round(resultado4, 4), 0.6508)
 
     def test_sne_ud_2(self):
+        """
+        Metodo encargado de realizar el test de sne_ud_2
+        """
         # Se prueba la restriccion en el formato de la funcion
         self.assertEqual(sne_ud_2(0, 0, 0, 2), self.ER_STR_FUNCION)
 
@@ -87,6 +93,9 @@ class TestSolNE(unittest.TestCase):
         self.assertEqual(round(resultado4, 4), 0.6508)
 
     def test_sne_ud_3(self):
+        """
+        Metodo encargado de realizar el test de sne_ud_3
+        """
         # Se prueba la restriccion en el formato de la funcion
         self.assertEqual(sne_ud_3(0, 0, 0, 2), self.ER_STR_FUNCION)
 
@@ -122,6 +131,9 @@ class TestSolNE(unittest.TestCase):
         self.assertEqual(round(resultado4, 4), 0.6508)
 
     def test_sne_ud_4(self):
+        """
+        Metodo encargado de realizar el test de sne_ud_4
+        """
         # Se prueba la restriccion en el formato de la funcion
         self.assertEqual(sne_ud_4(0, 0, 0, 2), self.ER_STR_FUNCION)
 
@@ -156,7 +168,86 @@ class TestSolNE(unittest.TestCase):
         resultado4 = sne_ud_4(self.FUNCION4, 1 / 5, 10 ** -5, 0)[0]
         self.assertEqual(round(resultado4, 4), 0.6507)
 
+    def test_sne_ud_5(self):
+        """
+        Metodo encargado de realizar el test de sne_ud_5
+        """
+        # Se prueba la restriccion en el formato de la funcion
+        self.assertEqual(sne_ud_5(0, 0, 0, 2), self.ER_STR_FUNCION)
+
+        # Se prueba la restriccion en el formato de xk
+        self.assertEqual(sne_ud_5('x**2', 'a', 0, 0), self.ER_X0)
+
+        # Se prueba la restriccion en la tolerancia
+        self.assertEqual(sne_ud_5('x**2', 0, True, 0), self.ER_TOL1)
+
+        # Se pruena la restriccion en el valor de tol
+        self.assertEqual(sne_ud_5('x + x', 0, -1, 1), self.ER_TOL2)
+
+        # Se prueba la restriccion en el valor de graph
+        self.assertEqual(sne_ud_5('x + x', 0, 0, 'v'), self.ER_GRAPH)
+
+        # Se prueba la sintaxis de la funcion
+        self.assertEqual(sne_ud_5('cos(x2)', 0, 0, 1), self.ER_SINTAXIS)
+
+        # Se prueba el resultado de una funcion
+        resultado1 = sne_ud_5(self.FUNCION1, 5 / 7, 10 ** -5, 0)[0]
+        self.assertEqual(round(resultado1, 4), 0.5149)
+
+        # Se prueba el resultado de una funcion
+        resultado2 = sne_ud_5(self.FUNCION2, 3 / 4, 10 ** -5, 0)[0]
+        self.assertEqual(round(resultado2, 4), 1.1462)
+
+        # Se prueba el resultado de una funcion
+        resultado3 = sne_ud_5(self.FUNCION3, 1 / 5, 10 ** -5, 0)[0]
+        self.assertEqual(round(resultado3, 4), 0.7391)
+
+        # Se prueba el resultado de una funcion
+        resultado4 = sne_ud_5(self.FUNCION4, 7 / 5, 10 ** -5, 0)[0]
+        self.assertEqual(round(resultado4, 4), 0.6508)
+
+    def test_sne_ud_6(self):
+        """
+        Metodo encargado de realizar el test de sne_ud_6
+        """
+        # Se prueba la restriccion en el formato de la funcion
+        self.assertEqual(sne_ud_6(0, 0, 0, 2), self.ER_STR_FUNCION)
+
+        # Se prueba la restriccion en el formato de xk
+        self.assertEqual(sne_ud_6('x**2', 'a', 0, 0), self.ER_X0)
+
+        # Se prueba la restriccion en la tolerancia
+        self.assertEqual(sne_ud_6('x**2', 0, True, 0), self.ER_TOL1)
+
+        # Se pruena la restriccion en el valor de tol
+        self.assertEqual(sne_ud_6('x + x', 0, -1, 1), self.ER_TOL2)
+
+        # Se prueba la restriccion en el valor de graph
+        self.assertEqual(sne_ud_6('x + x', 0, 0, 'v'), self.ER_GRAPH)
+
+        # Se prueba la sintaxis de la funcion
+        self.assertEqual(sne_ud_6('cos(x2)', 0, 0, 1), self.ER_SINTAXIS)
+
+        # Se prueba el resultado de una funcion
+        resultado1 = sne_ud_6(self.FUNCION1, 5 / 7, 10 ** -5, 0)[0]
+        self.assertEqual(round(resultado1, 4), 0.5149)
+
+        # Se prueba el resultado de una funcion
+        resultado2 = sne_ud_6(self.FUNCION2, 3 / 4, 10 ** -5, 0)[0]
+        self.assertEqual(round(resultado2, 4), 1.1462)
+
+        # Se prueba el resultado de una funcion
+        resultado3 = sne_ud_6(self.FUNCION3, 1 / 5, 10 ** -5, 0)[0]
+        self.assertEqual(round(resultado3, 4), 0.7391)
+
+        # Se prueba el resultado de una funcion
+        resultado4 = sne_ud_6(self.FUNCION4, 7 / 5, 10 ** -5, 0)[0]
+        self.assertEqual(round(resultado4, 4), 0.6508)
+
     def test_sne_fd_1(self):
+        """
+        Metodo encargado de realizar el test de sne_fd_1
+        """
         # Se prueba la restriccion en el formato de la funcion
         self.assertEqual(sne_fd_1(0, 0, 0, 2), self.ER_STR_FUNCION)
 
@@ -192,6 +283,9 @@ class TestSolNE(unittest.TestCase):
         self.assertEqual(round(resultado4, 4), 2.881)
 
     def test_sne_fd_2(self):
+        """
+        Metodo encargado de realizar el test de sne_fd_2
+        """
         # Se prueba la restriccion en el formato de la funcion
         self.assertEqual(sne_fd_2(0, 0, 1, 0, 2), self.ER_STR_FUNCION)
 
