@@ -1,9 +1,10 @@
 # Importación del paquete simbólico de Python
 from sympy import *
 # Importación de la función para graficar
-from Tarea1.graficar_error import graficar_error
+from python.graficar_error import graficar_error
 
-def chun_kim(f, xk, tol, graph = 1):
+
+def chun_kim(f, xk, tol, graph=1):
     """
     Metodo de Chun-Kim para encontrar el cero de una funcion
     :param f: string con la funcion que se debe evaluar
@@ -70,7 +71,6 @@ def chun_kim(f, xk, tol, graph = 1):
             nr = xk - (eval_ec / eval_dec)
             # Variable que contiene la imagen del nr en la derivada de la función
             eval_dec2 = float(derivada_ec.subs('x', nr))
-
 
             # Se calcula el xk+1 para la siguiente iteración
             xk = xk - (1/2) * (3 - (eval_dec2 / eval_dec)) * (eval_ec / eval_dec)

@@ -1,6 +1,6 @@
 import unittest
 
-from Tarea1.m8 import m8
+from python.m8 import m8
 
 
 class TestM8(unittest.TestCase):

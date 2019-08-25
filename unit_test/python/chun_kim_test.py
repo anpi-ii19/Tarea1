@@ -1,6 +1,6 @@
 import unittest
 
-from Tarea1.chun_kim import chun_kim
+from python.chun_kim import chun_kim
 
 
 class TestChunKim(unittest.TestCase):

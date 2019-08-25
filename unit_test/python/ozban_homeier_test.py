@@ -1,6 +1,6 @@
 import unittest
 
-from Tarea1.ozban_homeier import ozban_homeier
+from python.ozban_homeier import ozban_homeier
 
 
 class TestOzbanHomeier(unittest.TestCase):

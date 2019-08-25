@@ -1,7 +1,7 @@
 # Importación del paquete simbólico de Python
 from sympy import *
 # Importación de la función para graficar
-from Tarea1.graficar_error import graficar_error
+from python.graficar_error import graficar_error
 
 
 def m8(f, xk, y, tol, graph=1):
