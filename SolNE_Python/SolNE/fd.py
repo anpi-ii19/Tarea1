@@ -220,7 +220,7 @@ def sne_fd_3(f, xk, tol, graph=1):
     # Se retorna el resultado final
     return [xk, ite]
 
-def sne_fd_4(str_funcion, x0, y, tol, graph=1):
+def sne_fd_4(str_funcion, xk, y, tol, graph=1):
     """
     Metodo M4 para encontrar el cero de una funcion
     :param str_funcion: string con la funcion que se debe evaluar
@@ -231,7 +231,7 @@ def sne_fd_4(str_funcion, x0, y, tol, graph=1):
     :returns: lista con dos elementos, xk calculado y numero iteraciones
     """
     # Se verifican las restricciones generales en los argumentos
-    restr = ver_restr_fd(str_funcion, x0, tol, graph)
+    restr = ver_restr_fd(str_funcion, xk, tol, graph)
     if restr != 0:  # Si es diferente de cero significa un error
         return restr
 
@@ -245,7 +245,6 @@ def sne_fd_4(str_funcion, x0, y, tol, graph=1):
     lista_fxk = []
     lista_iter = []
     #se inicializa xk con el valor de x0
-    xk=x0
     #parametrizacion de la funcion a resolver
     funcion = sympify(str_funcion)
     f = lambda x : float(funcion.subs({'x': x}))
@@ -301,6 +300,10 @@ def sne_fd_5(str_funcion, a,b, tol, graph=1):
     if type(tol) != int and type(tol) != float:
         return "La tolerancia debe ser un numero"
 
+    # Se verifica el tipo de la tolerancia
+    if tol<0:
+        return "tol debe ser un numero positivo"
+
     # Se verifica que el valor de graph sea uno o cero
     if graph != 1 and graph != 0:
         return "graph debe ser cero (desactivado) o uno (activado)"
@@ -319,7 +322,7 @@ def sne_fd_5(str_funcion, a,b, tol, graph=1):
     lista_fxk = []
     lista_iter = []
     c = a+(b-a)/2 # valor inicial de c (biseccion)
-    f = lambda x : float(funcion.subs({'x': x})) #parametrizacion de la cuncion a resolver
+    f = lambda x : float(funcion.subs({'x': x})) #parametrizacion de la funcion a resolver
     while 1:
         fc = f(c)  # Se evalua la funcion
         if graph == 1:  # Se guardan los valores para la grafica
@@ -367,7 +370,7 @@ def aux_solve_cuadratic(x0,x1,x2,f):
     return x
 
 
-def sne_fd_6(str_funcion, x0,a1,a2,b1,b2, alpha, tol, graph=1, max_iter=200):
+def sne_fd_6(str_funcion, xk,a1,a2,b1,b2, alpha, tol, graph=1, max_iter=200):
     """
     Metodo parametrico de Ostrowski-Chun para encontrar el cero de una funcion
     :param str_funcion: string con la funcion que se debe evaluar
@@ -383,7 +386,7 @@ def sne_fd_6(str_funcion, x0,a1,a2,b1,b2, alpha, tol, graph=1, max_iter=200):
     :returns: lista con dos elementos, xk calculado y numero iteraciones
     """
     # Se verifican las restricciones generales en los argumentos
-    restr = ver_restr_fd(str_funcion, x0, tol, graph)
+    restr = ver_restr_fd(str_funcion, xk, tol, graph)
     if restr != 0:  # Si es diferente de cero significa un error
         return restr
 
@@ -399,13 +402,23 @@ def sne_fd_6(str_funcion, x0,a1,a2,b1,b2, alpha, tol, graph=1, max_iter=200):
     if type(a2) != int and type(a2) != float:
         return "a2 debe ser un numero"
 
-    # Se verifica el tipo de a1
+    # Se verifica el tipo de b1
     if type(b1) != int and type(b1) != float:
         return "b1 debe ser un numero"
 
-    # Se verifica el tipo de a1
+    # Se verifica el tipo de b2
     if type(b2) != int and type(b2) != float:
         return "b2 debe ser un numero"
+
+    # Se verifica el tipo de max_iter
+    if type(max_iter) != int and type(max_iter) != float:
+        return "max_iter debe ser un numero"
+
+    # Se verifica que max_iter sea positivo
+    if max_iter<0:
+        return "max_iter debe ser un numero positivo"
+
+
 
 
 
@@ -413,7 +426,6 @@ def sne_fd_6(str_funcion, x0,a1,a2,b1,b2, alpha, tol, graph=1, max_iter=200):
     # Listas donde se guardan los valores para graficar el error
     lista_fxk = []
     lista_iter = []
-    xk=x0
     funcion = sympify(str_funcion)
     f = lambda x : float(funcion.subs({'x': x}))
     w = lambda x1,x2: (f(x1)-f(x2))/(x1-x2)
