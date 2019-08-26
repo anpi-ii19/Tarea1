@@ -7,6 +7,13 @@ from SolNE.fd import *
 class TestSolNE(unittest.TestCase):
     ER_STR_FUNCION = "La funcion debe estar en un string"
     ER_X0 = "xk debe ser un numero"
+    ER_A1 = "a1 debe ser un numero"
+    ER_A2 = "a2 debe ser un numero"
+    ER_B1 = "b1 debe ser un numero"
+    ER_B2 = "b2 debe ser un numero"
+    ER_ALPHA = "alpha debe ser un numero"
+    ER_Y = "y debe ser un numero"
+
     ER_TOL1 = "La tolerancia debe ser un numero"
     ER_TOL2 = "tol debe ser un numero positivo"
     ER_GRAPH = 'graph debe ser cero (desactivado) o uno (activado)'
@@ -323,7 +330,6 @@ class TestSolNE(unittest.TestCase):
         # Se prueba el resultado de una funcion
         resultado4 = sne_fd_2(self.FUNCION4, 1 / 5, 1, 10 ** -5, 0)[0]
         self.assertEqual(round(resultado4, 4), 0.6508)
-
 
 if __name__ == '__main__':
     unittest.main()
