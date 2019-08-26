@@ -56,9 +56,9 @@ function [x_aprox, iter] = sne_fd_4(str_funcion, xk, y, tol, graph)
 
             else
                 wk = xk + (y * fxk)
-                fwk=f(wk)
+                fwk=funcion(wk)
                 yk=xk - (y * (fxk**2 / (fwk - fxk)))
-                fyk=f(yk)
+                fyk=funcion(yk)
                 y1 = ((wk - yk) / ((xk - yk) * y))
                 y2 = ((xk - yk) / ((wk - yk) * y * fxk)) * fwk
                 y3 = ((wk + xk - 2*yk) / ((xk - yk) * (wk - yk))) * fyk
