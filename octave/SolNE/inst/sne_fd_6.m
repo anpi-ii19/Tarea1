@@ -13,6 +13,11 @@
     function [x_aprox, iter] = sne_fd_6(str_funcion, xk,a1,a2,b1,b2, alpha, tol, graph, max_iter)
     if nargin == 4  % Si el numero de argumentos es igual a 4
         graph = 1   % Se declara con el valor por defecto
+        max_iter=200
+    end
+    
+    if nargin == 5  % Si el numero de argumentos es igual a 5
+         max_iter=200  
     end
 
     % Se verifica el tipo de dato de str_funcion
