@@ -27,13 +27,13 @@ funcion3 = 'cos(x) - x'
 %sne_ud_4(funcion3, 3/4, 10^-5, 0)
 %
 %
-%% Ejemplo de prueba para el metodo de Darvishi - Barati
+%% Ejemplo de prueba para el metodo de Ostrowski de cuarto orden
 %sne_ud_5(funcion1, 2/4, 10^-5, 0)
 %sne_ud_5(funcion2, 2/4, 10^-5, 0)
 %sne_ud_5(funcion3, 3/4, 10^-5, 0)
 %
 %
-%% Ejemplo de prueba para el metodo de Darvishi - Barati
+%% Ejemplo de prueba para el metodo de Traub
 %sne_ud_6(funcion1, 2/4, 10^-5, 0)
 %sne_ud_6(funcion2, 2/4, 10^-5, 0)
 %sne_ud_6(funcion3, 3/4, 10^-5, 0)
@@ -51,7 +51,7 @@ funcion3 = 'cos(x) - x'
 %sne_fd_2(funcion1, 5/7, 3/4, 10^-5, 0)
 %
 %
-%% Ejemplo de prueba para el metodo M8
+%% Ejemplo de prueba para el metodo IODF
 %sne_fd_3(funcion1, 5/7, 3/4, 10^-5, 0)
 %sne_fd_3(funcion1, 5/7, 3/4, 10^-5, 0)
 %sne_fd_3(funcion1, 5/7, 3/4, 10^-5, 0)
