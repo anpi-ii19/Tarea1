@@ -76,10 +76,3 @@ function [x_aprox, iter] = sne_fd_4(str_funcion, xk, y, tol, graph)
         end  % while 1
     end
 
-funcion1 = 'cos(2*x)^2 - x^2';
-disp(funcion1);
-[x_aprox1, iter1] = sne_fd_4(funcion1, 0,4, 10^-5);
-
-funcion2 = 'x**3- x - 1';
-disp(funcion2);
-[x_aprox2, iter2] = sne_fd_4(funcion2, 3/4,1,5*10^-5);
