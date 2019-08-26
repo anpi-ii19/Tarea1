@@ -125,7 +125,7 @@ Este paquete utiliza Sympy para el uso de matemática simbólica, NumPy para verif
 
 Una vez realizada la instalación, basta con importar el paquete de la siguiente manera:
 \begin{lstlisting}[language=python]
-  >>> import SolNE
+  >>> from SolNE import *
 \end{lstlisting}
 
 
@@ -382,7 +382,7 @@ Esta función implementa el método mejorado de Müller y Bisección, el cual fue to
 \end{minipage}
 
 \subsection{Función sne\_fd\_6}
-Esta función implementa el método paramétrico de Ostrowski-Chun, el cual fue tomado de \cite{cordero2015solving}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un valor inicial $x_{0}$, y las contantes $a_{1}$, $a_{2}$, $b_{1}$, $b_{2}$, $alpha$, las cuales tienen que ser un número real diferente de cero. A continuación se muestran algunos ejemplos de uso.
+Esta función implementa el método paramétrico de Ostrowski-Chun, el cual fue tomado de \cite{cordero2015solving}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un valor inicial $x_{0}$, y las contantes $a_{1}$, $a_{2}$, $b_{1}$, $b_{2}$, $alpha$, las cuales tienen que ser un número real diferente de cero. Además, recibe el parámetro $max\_iter$, el cual debe ser un número entero positivo, si no es ingresado su valor por defecto es de 200.  A continuación se muestran algunos ejemplos de uso.
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame = single]
