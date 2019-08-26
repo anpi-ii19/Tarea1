@@ -56,4 +56,19 @@ funcion3 = 'cos(x) - x'
 %sne_fd_3(funcion1, 5/7, 3/4, 10^-5, 0)
 %sne_fd_3(funcion1, 5/7, 3/4, 10^-5, 0)
 %
+
+%% Ejemplo de prueba para el metodo de M4
+% sne_fd_4(funcion1, 3/4,1,5*10**-5,1)
+% sne_fd_4(funcion2, 3/4,1,5*10**-5,1)
+% sne_fd_4(funcion3, 3/4,1,5*10**-5,1)
+
 %
+%% Ejemplo de prueba para el metodo de Muller-Biseccion
+% sne_fd_5(funcion1, 0,3,5*10**-3,0);
+% sne_fd_5(funcion2, 0,3,5*10**-3,0);
+% sne_fd_5(funcion3, 0,3,5*10**-3,0);
+
+%% Ejemplo de prueba para el metodo parametrico de Ostrowski-Chun
+% sne_fd_6(funcion1, 0.99, 0.9,2,2.8,2.5,1,5*10**-5,0,200);
+% sne_fd_6(funcion2, 0.99, 0.9,2,2.8,2.5,1,5*10**-5,0,200);
+% sne_fd_6(funcion3, 0.99, 0.9,2,2.8,2.5,1,5*10**-5,0,200);
