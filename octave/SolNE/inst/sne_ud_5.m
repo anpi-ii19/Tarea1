@@ -89,4 +89,4 @@ function [x_aprox, iter] = sne_ud_5(str_funcion, xk, tol, graph)
     x_aprox = xk
     iter = itr
 
-end  % weerakoon_fernando(str_funcion, xk, tol, graph)
+end  

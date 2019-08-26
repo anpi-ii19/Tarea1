@@ -92,12 +92,4 @@ function [x_aprox, iter] = sne_fd_3(str_funcion, xk, tol, graph)
     x_aprox = xk
     iter = itr
 
-end  % steffensen(str_funcion, xk, tol, graph)
-
-funcion1 = 'cos(2*x)^2 - x^2';
-disp(funcion1);
-[x_aprox1, iter1] = sne_fd_1(funcion1, 3/4, 10^-5);
-
-funcion2 = 'exp(x) - x^3 - x';
-disp(funcion2);
-[x_aprox2, iter2] = sne_fd_1(funcion2, 3/4, 10^-5);
+end 
