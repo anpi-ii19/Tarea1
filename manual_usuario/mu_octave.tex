@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
+%\usepackage[spanish]{babel}
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath,multicol,enumerate}
 \usepackage{amsfonts}
@@ -300,7 +300,57 @@ Esta función implementa el método IODF \textit{(Improved Ostrowski's method fr
   >> [x_aprox2, iter2] = sne_fd_3(funcion2, 3/4, 10^-5);
   x_aprox2 = 1.3678
   iter2 = 2
+\end{lstlisting}
+\end{minipage}
 
+\subsection{Función sne\_fd\_4}
+Esta función implementa el método iterativo M4, el cual fue tomado de \cite{bakhtiari2017widening}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con dos valores iniciales $x_{0}$ y $y$, con $y \neq 0$. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >> funcion1 = 'cos(2 * x)^2 - x^2';
+  >> [x_aprox1, iter1] = sne_fd_4(funcion1, 3/4, 10^-5);
+  x_aprox1 = 0.51493
+  iter1 = 2
+
+  >> funcion2 = 'exp(x) - x^3 - x';
+  >> [x_aprox2, iter2] = sne_fd_4(funcion2, 3/4, 10^-5);
+  x_aprox2 = 1.3678
+  iter2 = 2
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Función sne\_fd\_5}
+Esta función implementa el método mejorado de Müller y Bisección, el cual fue tomado de \cite{wu2005improved}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con el limite izquierdo del intervalo ($a$), y el límite derecho($b$). A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >> funcion1 = 'cos(2 * x)^2 - x^2';
+  >> [x_aprox1, iter1] = sne_fd_5(funcion1, 3/4, 10^-5);
+  x_aprox1 = 0.51493
+  iter1 = 2
+
+  >> funcion2 = 'exp(x) - x^3 - x';
+  >> [x_aprox2, iter2] = sne_fd_5(funcion2, 3/4, 10^-5);
+  x_aprox2 = 1.3678
+  iter2 = 2
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Función sne\_fd\_6}
+Esta función implementa el método paramétrico de Ostrowski-Chun, el cual fue tomado de \cite{cordero2015solving}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un valor inicial $x_{0}$, y las contantes $a_{1}$, $a_{2}$, $b_{1}$, $b_{2}$, $alpha$, las cuales tienen que ser un número real diferente de cero. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >> funcion1 = 'cos(2 * x)^2 - x^2';
+  >> [x_aprox1, iter1] = sne_fd_6(funcion1, 3/4, 10^-5);
+  x_aprox1 = 0.51493
+  iter1 = 2
+
+  >> funcion2 = 'exp(x) - x^3 - x';
+  >> [x_aprox2, iter2] = sne_fd_6(funcion2, 3/4, 10^-5);
+  x_aprox2 = 1.3678
+  iter2 = 2
 \end{lstlisting}
 \end{minipage}
 
