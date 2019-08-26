@@ -1,31 +1,3 @@
-%     Metodo auxiliar para resolver una ecuacion cuadratica (Muller)
-%     :param x0: numero real
-%     :param x1: numero real
-%     :param x2: numero real
-%     :param f: funcion a evaluar
-%     :returns: cero de la funcion cuadratica
-function [x] = aux_solve_cuadratic(x0,x1,x2,func)
-  f = matlabFunction(sym(func));
-  f0 = f(x0)
-  f1 = f(x1)
-  f2 = f(x2)
-  c =  f2
-  b1 = (x0-x2)**2*(f1-f2)-( x1-x2)**2*(f0-f2)
-  b2 = (x0-x1)*(x0-x2)*(x1-x2)
-  b=b1/b2
-  a1 =   (x1-x2)*(f0-f2)-((x0-x2)*(f1-f2) )
-  a2 = (x0-x1)*(x0-x2)*(x1-x2)
-  a=a1/a2
-  if b<0
-    signb=-1
-  else
-    signb=1
-  end
-  x=x2 - (2*c)/(b+signb*(b**2-4*a*c)**(1/2))
-end
-
-
-
 %     Metodo  mejorado de Muller y Biseccion para encontrar el cero de una funcion
 %     :param str_funcion: string con la funcion que se debe evaluar
 %     :param a: limite inferior del dominio a resolver
@@ -33,7 +5,7 @@ end
 %     :param tol: tolerancia al fallo de debe tener el resultado final
 %     :param graph: valor 0 para no graficar o 1 para graficar
 %     :returns: lista con dos elementos, xk calculado y numero iteraciones
-function [x_aprox, iter] = sne_fd_4(str_funcion, xk, y, tol, graph)
+function [x_aprox, iter] = sne_fd_5(str_funcion, xk, y, tol, graph)
     if nargin == 4  % Si el numero de argumentos es igual a 4
         graph = 1   % Se declara con el valor por defecto
     end
@@ -98,6 +70,37 @@ function [x_aprox, iter] = sne_fd_4(str_funcion, xk, y, tol, graph)
 
         end  % while 1
     end
+
+    
+  %     Metodo auxiliar para resolver una ecuacion cuadratica (Muller)
+  %     :param x0: numero real
+  %     :param x1: numero real
+  %     :param x2: numero real
+  %     :param f: funcion a evaluar
+  %     :returns: cero de la funcion cuadratica
+  function [x] = aux_solve_cuadratic(x0,x1,x2,func)
+    f = matlabFunction(sym(func));
+    f0 = f(x0)
+    f1 = f(x1)
+    f2 = f(x2)
+    c =  f2
+    b1 = (x0-x2)**2*(f1-f2)-( x1-x2)**2*(f0-f2)
+    b2 = (x0-x1)*(x0-x2)*(x1-x2)
+    b=b1/b2
+    a1 =   (x1-x2)*(f0-f2)-((x0-x2)*(f1-f2) )
+    a2 = (x0-x1)*(x0-x2)*(x1-x2)
+    a=a1/a2
+    if b<0
+      signb=-1
+    else
+      signb=1
+    end
+    x=x2 - (2*c)/(b+signb*(b**2-4*a*c)**(1/2))
+  end
+
+
+
+
 
 funcion1 = 'cos(2*x)^2 - x^2';
 disp(funcion1);
