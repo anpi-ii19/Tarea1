@@ -6,13 +6,18 @@
 %   :param b1: constante que es un numero real, excepto cero.
 %   :param b2: constante que es un numero real, excepto cero.
 %   :param alpha: constante que es un numero real, excepto cero.
-%
 %   :param tol: tolerancia al fallo de debe tener el resultado final
 %   :param graph: valor 0 para no graficar o 1 para graficar
+%   :param max_iter: cantidad maxima de iteraciones permitidas
 %   :returns: lista con dos elementos, xk calculado y numero iteraciones
     function [x_aprox, iter] = sne_fd_6(str_funcion, xk,a1,a2,b1,b2, alpha, tol, graph, max_iter)
     if nargin == 4  % Si el numero de argumentos es igual a 4
         graph = 1   % Se declara con el valor por defecto
+        max_iter=200
+    end
+    
+    if nargin == 5  % Si el numero de argumentos es igual a 5
+         max_iter=200  
     end
 
     % Se verifica el tipo de dato de str_funcion
