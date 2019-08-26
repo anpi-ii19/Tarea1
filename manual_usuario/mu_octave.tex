@@ -96,11 +96,11 @@ La última versión se puede descargar desde https://www.octave.org o buscando �
   $ sudo pip3 install sympy
 \end{lstlisting}
 Abrir GNU Octave y desde la línea de comandos de Octave escribir:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=matlab]
   >> pkg install -forge symbolic
 \end{lstlisting}
 Cargue el paquete simbólico con el comando Octave:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=matlab]
   >> pkg load symbolic
 \end{lstlisting}
 
@@ -109,23 +109,22 @@ Cargue el paquete simbólico con el comando Octave:
 \subsection{Instalación SolNE}
 \begin{enumerate}
 	\item Descomprima el archivo llamado SolNE.zip
-	\item Ingrese en la captera donde se encuentran los archivos setup.py y test.py
+	\item Ingrese en la captera donde se encuentra el archivo SolNE.tar.gz
 	\item Abra esta dirección en la consola.
-	\item Ejecute el siguiente comando para verificar que su dispositivo cuenta con las dependencias necesarias:
+	\item Ejecute octave-cli al estar en esta carpeta en la consola:
 \begin{lstlisting}[language=bash]
-  $ python3 test.py
+  $ octave-cli
 \end{lstlisting}
-	\item Si las pruebas no se ejecutan con éxito, instale las dependencias faltantes. Si se ejecutan correctamente ingrese el comando exit() para cerrar python.
-	\item Ejecute el siguiente comando en la consola:
+	\item En la línea de comandos de Octave, ejecute el siguiente comando para instalar el paquete:
 \begin{lstlisting}[language=bash]
-  $ pip3 install .
-\end{lstlisting}
-	\item Una vez finalizada la instalación puede cerrar la consola.
+  $ pkg install SolNE.tar.gz
+\end{lstlisting}	
+	\item Si no se muestra ningún mensaje la instalación ha sido completada satisfactoriamente. 
 \end{enumerate}
 \section{Cómo utilizar SolNE}\label{uso}
-Una vez realizada la instalación, basta con importar el paquete de la siguiente manera:
-\begin{lstlisting}[language=python]
-  >>> import SolNE
+Una vez realizada la instalación, ya sea desde octave-cli o desde la versión gráfica del programa, ejecute en la línea de comandos lo siguiente para cargar el paquete:
+\begin{lstlisting}[language=matlab]
+  >> pkg load solne
 \end{lstlisting}
 Como se indicó anteriormente, aquellos métodos que incluyen el cálculo de derivadas empiezan con el prefijo $sne\_ud\_\#$ (\textit{solving nonlinear equation - using derivative}), y los que no empiezan con el prefijo $sne\_fg\_\#$ (\textit{solving nonlinear equation - free derivative}), donde $\#$ es el número de método. Todas las funciones ingresadas deben estar en términos de $x$.\newline
 De manera general, cada método recibe los siguientes argumentos:
@@ -150,13 +149,13 @@ Esta función implementa el método iterativo de Weerakoon-Fernando, el cual fue
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_1(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 2
 
   >> funcion2 = 'exp(x) - x^3 - x';
   >> [x_aprox2, iter2] = sne_ud_1(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.3678
+  iter2 = 4
 
 \end{lstlisting}
 \end{minipage}
@@ -168,13 +167,13 @@ Esta función implementa el método iterativo de Chun-Kim, el cual fue tomado de
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_2(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 2
 
-  >> funcion2 = 'exp(x) - x^3 - x';
+  >> funcion2 = 'exp(x) - x - 2';
   >> [x_aprox2, iter2] = sne_ud_2(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.1462
+  iter2 = 4
 
 \end{lstlisting}
 \end{minipage}
@@ -186,13 +185,13 @@ Esta función implementa el método iterativo de Özban-Homeier, el cual fue tom
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_3(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 3
 
   >> funcion2 = 'exp(x) - x^3 - x';
   >> [x_aprox2, iter2] = sne_ud_3(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.3678
+  iter2 = 3
 
 \end{lstlisting}
 \end{minipage}
@@ -204,13 +203,13 @@ Esta función implementa el método iterativo de Darvishi-Barati, el cual fue to
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_4(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 3
 
-  >> funcion2 = 'exp(x) - x^3 - x';
+  >> funcion2 = 'exp(x) - x - 2';
   >> [x_aprox2, iter2] = sne_ud_4(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.1462
+  iter2 = 3
 
 \end{lstlisting}
 \end{minipage}
@@ -222,13 +221,13 @@ Esta función implementa el método de Ostrowski de cuarto orden, el cual fue to
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_5(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 2
 
   >> funcion2 = 'exp(x) - x^3 - x';
   >> [x_aprox2, iter2] = sne_ud_5(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.1462
+  iter2 = 3
 
 \end{lstlisting}
 \end{minipage}
@@ -240,13 +239,13 @@ Esta función implementa el método de Traub, el cual fue tomado de \cite{budzko
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_6(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 3
 
-  >> funcion2 = 'exp(x) - x^3 - x';
+  >> funcion2 = 'exp(x) - x - 2';
   >> [x_aprox2, iter2] = sne_ud_6(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox1 = 0.51493
+  iter1 = 3
 
 \end{lstlisting}
 \end{minipage}
@@ -258,13 +257,13 @@ Esta función implementa el método iterativo de Steffensen, el cual fue tomado 
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_fd_1(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 3
 
   >> funcion2 = 'exp(x) - x^3 - x';
   >> [x_aprox2, iter2] = sne_fd_1(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.3678
+  iter2 = 4
 
 \end{lstlisting}
 \end{minipage}
@@ -275,14 +274,14 @@ Esta función implementa el método iterativo M8, el cual fue tomado de \cite{ba
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
-  >> [x_aprox1, iter1] = sne_fd_2(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  >> [x_aprox1, iter1] = sne_fd_2(funcion1, 3/4, 1, 10^-5);
+  x_aprox1 = 0.51493
+  iter1 = 2
 
   >> funcion2 = 'exp(x) - x^3 - x';
-  >> [x_aprox2, iter2] = sne_fd_2(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  >> [x_aprox2, iter2] = sne_fd_2(funcion2, 3/4, 1, 10^-5);
+  x_aprox2 = 1.3678
+  iter2 = 2
 
 \end{lstlisting}
 \end{minipage}
@@ -294,13 +293,13 @@ Esta función implementa el método IODF \textit{(Improved Ostrowski's method fr
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_fd_3(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 2
 
   >> funcion2 = 'exp(x) - x^3 - x';
   >> [x_aprox2, iter2] = sne_fd_3(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.3678
+  iter2 = 2
 
 \end{lstlisting}
 \end{minipage}
@@ -310,19 +309,3 @@ Esta función implementa el método IODF \textit{(Improved Ostrowski's method fr
 \nocite{*}
 \bibliography{biblio}
 \end{document}
-
-
-\begin{minipage}{\linewidth}
-\begin{lstlisting}[frame = single]
-  >> funcion1 = 'cos(2 * x)^2 - x^2';
-  >> [x_aprox1, iter1] = sne_fd_1(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
-
-  >> funcion2 = 'exp(x) - x^3 - x';
-  >> [x_aprox2, iter2] = sne_fd_1(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
-
-\end{lstlisting}
-\end{minipage}
