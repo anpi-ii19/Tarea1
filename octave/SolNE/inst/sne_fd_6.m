@@ -1,9 +1,16 @@
-% Metodo M4 para encontrar el cero de una funcion
-% :param str_funcion: string con la funcion que se debe evaluar
-% :param xk: valor de x inicial con el cual aplicar el metodo
-% :param y: constante que es un numero real, excepto cero.
-% :param tol: tolerancia al fallo de debe tener el resultado final
-% :returns: xk calculado y numero iteracionesfunction [x_aprox, iter] = sne_fd_4(str_funcion, xk, y, tol, graph)
+% Metodo parametrico de Ostrowski-Chun para encontrar el cero de una funcion
+%   :param str_funcion: string con la funcion que se debe evaluar
+%   :param x0: valor de x inicial con el cual aplicar el metodo
+%   :param a1:  constante que es un numero real, excepto cero.
+%   :param a2: constante que es un numero real, excepto cero.
+%   :param b1: constante que es un numero real, excepto cero.
+%   :param b2: constante que es un numero real, excepto cero.
+%   :param alpha: constante que es un numero real, excepto cero.
+%
+%   :param tol: tolerancia al fallo de debe tener el resultado final
+%   :param graph: valor 0 para no graficar o 1 para graficar
+%   :returns: lista con dos elementos, xk calculado y numero iteraciones
+    function [x_aprox, iter] = sne_fd_6(str_funcion, xk,a1,a2,b1,b2, alpha, tol, graph, max_iter)
     if nargin == 4  % Si el numero de argumentos es igual a 4
         graph = 1   % Se declara con el valor por defecto
     end
