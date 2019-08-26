@@ -341,6 +341,66 @@ Esta función implementa el método IODF \textit{(Improved Ostrowski's method free
 \end{lstlisting}
 \end{minipage}
 
+\subsection{Función sne\_fd\_4}
+Esta función implementa el método iterativo M4, el cual fue tomado de \cite{bakhtiari2017widening}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con dos valores iniciales $x_{0}$ y $y$, con $y \neq 0$. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_fd_4(funcion1, 5 / 7, 1, 10 ** -5, 0)
+  [0.5149332646603385, 2]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_fd_4(funcion2, 3 / 4, 1, 10 ** -5, 0)
+  [1.1461932206206447, 3]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_fd_4(funcion3, 1 / 5, 1, 10 ** -5, 0)
+  [0.7390851332151617, 2]
+  
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Función sne\_fd\_5}
+Esta función implementa el método mejorado de Müller y Bisección, el cual fue tomado de \cite{wu2005improved}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con el limite izquierdo del intervalo ($a$), y el límite derecho($b$). A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_fd_5(funcion1, 0, 5, 10 ** -5, 0)
+  [0.5149301973028021, 7]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_fd_5(funcion2, -5, 5, 10 ** -5, 0)
+  [1.1461885868072625, 128]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_fd_5(funcion3, -5, 5, 10 ** -5, 0)
+  [0.7390794200572189, 24]
+  
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Función sne\_fd\_6}
+Esta función implementa el método paramétrico de Ostrowski-Chun, el cual fue tomado de \cite{cordero2015solving}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un valor inicial $x_{0}$, y las contantes $a_{1}$, $a_{2}$, $b_{1}$, $b_{2}$, $alpha$, las cuales tienen que ser un número real diferente de cero. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_fd_6(funcion1, 3 / 4, 1, 2, 0.3, 2, 0.7, 10 ** -5, 0)
+  [0.5149306605677052, 22]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_fd_6(funcion2, 3 / 4, 1, 2, 0.3, 2, 0.7, 10 ** -5, 0)
+  [1.1461947355781947, 7]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_fd_6(funcion3, 3 / 4, 1, 2, 0.3, 2, 0.7, 10 ** -5, 0)
+  [0.7390840785564095, 5]
+  
+\end{lstlisting}
+\end{minipage}
+
 \newpage
 \section{Referencias Bibliográficas}
 \nocite{*}

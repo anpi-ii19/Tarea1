@@ -30,4 +30,15 @@ A.~Cordero, J.~L. Hueso, E.~Mart{\'\i}nez, and J.~R. Torregrosa, ``Steffensen
   type methods for solving nonlinear equations,'' {\em Journal of computational
   and applied mathematics}, vol.~236, no.~12, pp.~3058--3064, 2012.
 
+\bibitem{wu2005improved}
+X.~Wu, ``Improved muller method and bisection method with global and asymptotic
+  superlinear convergence of both point and interval for solving nonlinear
+  equations,'' {\em Applied mathematics and computation}, vol.~166, no.~2,
+  pp.~299--311, 2005.
+
+\bibitem{cordero2015solving}
+A.~Cordero, J.~G. Maim{\'o}, J.~R. Torregrosa, and M.~P. Vassileva, ``Solving
+  nonlinear problems by ostrowski--chun type parametric families,'' {\em
+  Journal of Mathematical Chemistry}, vol.~53, no.~1, pp.~430--449, 2015.
+
 \end{thebibliography}
