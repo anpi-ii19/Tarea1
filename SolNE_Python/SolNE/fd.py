@@ -231,7 +231,7 @@ def sne_fd_4(str_funcion, x0, y, tol, graph=1):
     :returns: lista con dos elementos, xk calculado y numero iteraciones
     """
     # Se verifican las restricciones generales en los argumentos
-    restr = ver_restr_fd(f, x0, tol, graph)
+    restr = ver_restr_fd(str_funcion, x0, tol, graph)
     if restr != 0:  # Si es diferente de cero significa un error
         return restr
 
@@ -356,7 +356,7 @@ def aux_solve_cuadratic(x0,x1,x2,f):
     f1 = f(x1)
     f2 = f(x2)
     c =  f2
-    b1 =   pow(x0-x2,2)*(f1-f2)-pow( x1-x2,2)*(f0-f2)
+    b1 =   ((x0-x2)**2)*(f1-f2)-(( x1-x2)**2)*(f0-f2)
     b2 = (x0-x1)*(x0-x2)*(x1-x2)
     b=b1/b2
     a1 =   (x1-x2)*(f0-f2)-((x0-x2)*(f1-f2) )
@@ -383,7 +383,7 @@ def sne_fd_6(str_funcion, x0,a1,a2,b1,b2, alpha, tol, graph=1, max_iter=200):
     :returns: lista con dos elementos, xk calculado y numero iteraciones
     """
     # Se verifican las restricciones generales en los argumentos
-    restr = ver_restr_fd(f, x0, tol, graph)
+    restr = ver_restr_fd(str_funcion, x0, tol, graph)
     if restr != 0:  # Si es diferente de cero significa un error
         return restr
 
