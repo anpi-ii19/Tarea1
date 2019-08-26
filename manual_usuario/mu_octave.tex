@@ -96,11 +96,11 @@ La última versión se puede descargar desde https://www.octave.org o buscando �
   $ sudo pip3 install sympy
 \end{lstlisting}
 Abrir GNU Octave y desde la línea de comandos de Octave escribir:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=matlab]
   >> pkg install -forge symbolic
 \end{lstlisting}
 Cargue el paquete simbólico con el comando Octave:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=matlab]
   >> pkg load symbolic
 \end{lstlisting}
 
@@ -109,23 +109,22 @@ Cargue el paquete simbólico con el comando Octave:
 \subsection{Instalación SolNE}
 \begin{enumerate}
 	\item Descomprima el archivo llamado SolNE.zip
-	\item Ingrese en la captera donde se encuentran los archivos setup.py y test.py
+	\item Ingrese en la captera donde se encuentra el archivo SolNE.tar.gz
 	\item Abra esta dirección en la consola.
-	\item Ejecute el siguiente comando para verificar que su dispositivo cuenta con las dependencias necesarias:
+	\item Ejecute octave-cli al estar en esta carpeta en la consola:
 \begin{lstlisting}[language=bash]
-  $ python3 test.py
+  $ octave-cli
 \end{lstlisting}
-	\item Si las pruebas no se ejecutan con éxito, instale las dependencias faltantes. Si se ejecutan correctamente ingrese el comando exit() para cerrar python.
-	\item Ejecute el siguiente comando en la consola:
+	\item En la línea de comandos de Octave, ejecute el siguiente comando para instalar el paquete:
 \begin{lstlisting}[language=bash]
-  $ pip3 install .
-\end{lstlisting}
-	\item Una vez finalizada la instalación puede cerrar la consola.
+  $ pkg install SolNE.tar.gz
+\end{lstlisting}	
+	\item Si no se muestra ningún mensaje la instalación ha sido completada satisfactoriamente. 
 \end{enumerate}
 \section{Cómo utilizar SolNE}\label{uso}
-Una vez realizada la instalación, basta con importar el paquete de la siguiente manera:
-\begin{lstlisting}[language=python]
-  >>> import SolNE
+Una vez realizada la instalación, ya sea desde octave-cli o desde la versión gráfica del programa, ejecute en la línea de comandos lo siguiente para cargar el paquete:
+\begin{lstlisting}[language=matlab]
+  >> pkg load solne
 \end{lstlisting}
 Como se indicó anteriormente, aquellos métodos que incluyen el cálculo de derivadas empiezan con el prefijo $sne\_ud\_\#$ (\textit{solving nonlinear equation - using derivative}), y los que no empiezan con el prefijo $sne\_fg\_\#$ (\textit{solving nonlinear equation - free derivative}), donde $\#$ es el número de método. Todas las funciones ingresadas deben estar en términos de $x$.\newline
 De manera general, cada método recibe los siguientes argumentos:
