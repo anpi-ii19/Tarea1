@@ -247,6 +247,7 @@ def sne_fd_4(str_funcion, x0, y, tol, graph=1):
     #se inicializa xk con el valor de x0
     xk=x0
     #parametrizacion de la funcion a resolver
+    funcion = sympify(str_funcion)
     f = lambda x : float(funcion.subs({'x': x}))
     while 1:
         fxk = f(xk)  # Se evalua la funcion
@@ -339,7 +340,7 @@ def sne_fd_5(str_funcion, a,b, tol, graph=1):
     if graph == 1:
         graficar_error(lista_iter, lista_fxk)
 
-    return [xk, itr]
+    return [c, itr]
 
 
 def aux_solve_cuadratic(x0,x1,x2,f):
@@ -362,7 +363,7 @@ def aux_solve_cuadratic(x0,x1,x2,f):
     a2 = (x0-x1)*(x0-x2)*(x1-x2)
     a=a1/a2
     sign = lambda x: (1, -1)[x < 0]
-    x=x2 - (2*c)/(b+sign(b)*sqrt(b**2-4*a*c))
+    x=x2 - (2*c)/(b+sign(b)*(b**2-4*a*c)**(1/2))
     return x
 
 
@@ -413,6 +414,7 @@ def sne_fd_6(str_funcion, x0,a1,a2,b1,b2, alpha, tol, graph=1, max_iter=200):
     lista_fxk = []
     lista_iter = []
     xk=x0
+    funcion = sympify(str_funcion)
     f = lambda x : float(funcion.subs({'x': x}))
     w = lambda x1,x2: (f(x1)-f(x2))/(x1-x2)
     while 1:
