@@ -42,8 +42,7 @@
 
 \lstset{
 showstringspaces=false
-frame = single, 
-language=Python
+frame = single
 }
 
 \begin{document}
@@ -74,12 +73,12 @@ language=Python
 SolNE es un paquete cuyo objetivo es la obtención de una aproximación a la solución de una ecuación no lineal de la forma $f(x) = 0$. Es una biblioteca para Python que provee doce métodos iterativos diferentes, seis que emplean el uso de derivadas y seis que no utilizan derivadas. Aquellos métodos que incluyen el cálculo de derivadas empiezan con el prefijo $sne\_ud\_\#$ (\textit{solving nonlinear equation - using derivative}), y los que no empiezan con el prefijo $sne\_fg\_\#$ (\textit{solving nonlinear equation - free derivative}), donde $\#$ es el número de método.
 
 \section{Instalación}
-En este  manual se muestran los pasos para la instalación de SolNE en Ubuntu. En cada sección se muestran los comandos que deben ser ejecutados en la consola para la instalación de cada dependencia específica. Los comandos se encuentran en un orden específico de ejecución, por lo que se recomienda empezar por la sección 2.1.1.
+En este  manual se muestran los pasos para la instalación de SolNE en Ubuntu. En cada sección se muestran los comandos que deben ser ejecutados en la consola para la instalación de cada dependencia específica. Los comandos se encuentran en un orden específico de ejecución, por lo que se recomienda empezar por la sección~\ref{ins-python3}.
 
 \subsection{Requisitos}
 Este paquete utiliza Sympy para el uso de matemática simbólica, NumPy para verificar que el resultado no sea NaN o infinito, y Matplotlib para realizar las gráficas de error.
 
-\subsubsection{Python3}
+\subsubsection{Python3}\label{ins-python3}
 \begin{lstlisting}[language=bash]
   $ sudo apt-get install python3
 \end{lstlisting}
@@ -105,12 +104,32 @@ Este paquete utiliza Sympy para el uso de matemática simbólica, NumPy para verif
 \end{lstlisting}
 
 \subsection{Instalación SolNE}
+\begin{enumerate}
+	\item Descomprima el archivo llamado SolNE.zip
+	\item Ingrese en la captera donde se encuentran los archivos setup.py y test.py
+	\item Abra esta dirección en la consola.
+	\item Ejecute el siguiente comando para verificar que su dispositivo cuenta con las dependencias necesarias:
+\begin{lstlisting}[language=bash]
+  $ python3 test.py
+\end{lstlisting}
+	\item Si las pruebas no se ejecutan con éxito, instale las dependencias faltantes. Si se ejecutan correctamente ingrese el comando exit() para cerrar python.
+	\item Ejecute el siguiente comando en la consola:
+\begin{lstlisting}[language=bash]
+  $ pip3 install .
+\end{lstlisting}
+	\item Una vez finalizada la instalación puede cerrar la consola.
+\end{enumerate}
+
 
 \section{Cómo utilizar SolNE}\label{uso}
 
-*********Indicar como importar el paquete************
+Una vez realizada la instalación, basta con importar el paquete de la siguiente manera:
+\begin{lstlisting}[language=python]
+  >>> import SolNE
+\end{lstlisting}
 
-Como se indicó anteriormente, aquellos métodos que incluyen el cálculo de derivadas empiezan con el prefijo $sne\_ud\_\#$ (\textit{solving nonlinear equation - using derivative}), y los que no empiezan con el prefijo $sne\_fg\_\#$ (\textit{solving nonlinear equation - free derivative}), donde $\#$ es el número de método.\newline
+
+Como se indicó anteriormente, aquellos métodos que incluyen el cálculo de derivadas empiezan con el prefijo $sne\_ud\_\#$ (\textit{solving nonlinear equation - using derivative}), y los que no empiezan con el prefijo $sne\_fg\_\#$ (\textit{solving nonlinear equation - free derivative}), donde $\#$ es el número de método. Todas las funciones ingresadas deben estar en términos de $x$.\newline
 
 De manera general, cada método recibe los siguientes argumentos:
 \begin{itemize}
@@ -120,7 +139,7 @@ De manera general, cada método recibe los siguientes argumentos:
 	\item $graph$: este parámetro permite mostrar la gráfica de iteraciones ($k$) versus errores ($|f(x_{k})|$) del método iterativo. Si $graf = 0$, entonces no se mostrará la gráfica. Si $graf = 1$ o se omite el parámetro $graf$, entonces sí se mostrará la gráfica.
 \end{itemize}
 
-De manera general, cada método retorna los siguiente:
+De manera general, cada método retorna una lista con dos elementos, el primero corresponde a $x_{aprox}$ calculado, y el segundo a la cantidad de iteraciones $iter$, adicionalmente, se mostrará o no la gráfica de error según el valor de $graph$. Todos estos valores se explican a continuación:
 \begin{itemize}
 	\item $x_{aprox}$, el cual es la aproximación a la solución de la ecuación $f(x) = 0$.
 	\item $iter$, el cual representa el número de iteraciones que se utilizaron para aproximar el cero de la función con una tolerancia $tol$.
@@ -161,7 +180,7 @@ Esta función implementa el método iterativo de Chun-Kim, el cual fue tomado de \
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame = single]
   >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
-  >>> sne_ud_2(funcion1, 5 / 7, 10 ** -5, 1)
+  >>> sne_ud_2(funcion1, 5 / 7, 10 ** -5, 0)
   [0.5149331280095247, 2]
   
   >>> funcion2 = 'exp(x) - x - 2'
@@ -181,7 +200,7 @@ Esta función implementa el método iterativo de Özban-Homeier, el cual fue tomado
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame = single]
   >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
-  >>> sne_ud_3(funcion1, 5 / 7, 10 ** -5, 1)
+  >>> sne_ud_3(funcion1, 5 / 7, 10 ** -5, 0)
   [0.5149340851889033, 2]
   
   >>> funcion2 = 'exp(x) - x - 2'
@@ -201,7 +220,7 @@ Esta función implementa el método iterativo de Darvishi-Barati, el cual fue toma
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame = single]
   >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
-  >>> sne_ud_4(funcion1, 5 / 7, 10 ** -5, 1)
+  >>> sne_ud_4(funcion1, 5 / 7, 10 ** -5, 0)
   [0.514935456178876, 2]
   
   >>> funcion2 = 'exp(x) - x - 2'
@@ -210,6 +229,46 @@ Esta función implementa el método iterativo de Darvishi-Barati, el cual fue toma
   
   >>> funcion3 = 'cos(x) - x'
   >>> sne_ud_4(funcion3, 1 / 5, 10 ** -5, 0)
+  [0.7390851332151605, 3]
+  
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Función sne\_ud\_5}
+Esta función implementa el método de Ostrowski de cuarto orden, el cual fue tomado de \cite{behl2015construction}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un solo valor inicial $x_{0}$. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_ud_5(funcion1, 5 / 7, 10 ** -5, 0)
+  [0.51493326456136, 2]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_ud_5(funcion2, 3 / 4, 10 ** -5, 0)
+  [1.1461932226178897, 2]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_ud_5(funcion3, 1 / 5, 10 ** -5, 0)
+  [0.7390851332264071, 2]
+  
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Función sne\_ud\_6}
+Esta función implementa el método de Traub, el cual fue tomado de \cite{budzko2015new}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un solo valor inicial $x_{0}$. A continuación se muestran algunos ejemplos de uso.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_ud_6(funcion1, 5 / 7, 10 ** -5, 0)
+  [0.514935456178876, 2]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_ud_6(funcion2, 3 / 4, 10 ** -5, 0)
+  [1.1461901734857387, 3]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_ud_6(funcion3, 1 / 5, 10 ** -5, 0)
   [0.7390851332151605, 3]
   
 \end{lstlisting}
@@ -243,7 +302,7 @@ Esta función implementa el método iterativo de Steffensen, el cual fue tomado de
 \end{figure}
 
 \subsection{Función sne\_fd\_2}
-Esta función implementa el método iterativo M8, el cual fue tomado de \cite{bakhtiari2017widening}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con dos valores iniciales $x_{0}$ y $x_{1}$. A continuación se muestran algunos ejemplos de uso.
+Esta función implementa el método iterativo M8, el cual fue tomado de \cite{bakhtiari2017widening}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con dos valores iniciales $x_{0}$ y $y$, con $y \neq 0$. A continuación se muestran algunos ejemplos de uso.
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame = single]
@@ -262,7 +321,27 @@ Esta función implementa el método iterativo M8, el cual fue tomado de \cite{bakh
 \end{lstlisting}
 \end{minipage}
 
+\subsection{Función sne\_fd\_3}
+Esta función implementa el método IODF \textit{(Improved Ostrowski's method free from derivatives)}, el cual fue tomado de \cite{cordero2012steffensen}. Esta función recibe los argumentos explicados anteriormente al inicio de la sección~\ref{uso}, con un solo valor inicial $x_{0}$. A continuación se muestran algunos ejemplos de uso.
 
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame = single]
+  >>> funcion1 = 'cos(2 * x) ** 2 - x ** 2'
+  >>> sne_fd_3(funcion1, 5 / 7, 10 ** -5, 0)
+  [0.5149332646610815, 2]
+  
+  >>> funcion2 = 'exp(x) - x - 2'
+  >>> sne_fd_3(funcion2, 3 / 4, 10 ** -5, 0)
+  [1.1461932206205827, 2]
+  
+  >>> funcion3 = 'cos(x) - x'
+  >>> sne_fd_3(funcion3, 1 / 5, 10 ** -5, 0)
+  [0.7390851332151607, 2]
+  
+\end{lstlisting}
+\end{minipage}
+
+\newpage
 \section{Referencias Bibliográficas}
 \nocite{*}
 \bibliography{biblio}
