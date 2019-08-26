@@ -325,12 +325,12 @@ Esta función implementa el método iterativo M4, el cual fue tomado de \cite{ba
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
-  >> [x_aprox1, iter1] = sne_fd_4(funcion1, 3/4, 10^-5);
+  >> [x_aprox1, iter1] = sne_fd_4(funcion1, 3/4, 1, 10^-5);
   x_aprox1 = 0.51493
   iter1 = 2
 
   >> funcion2 = 'exp(x) - x^3 - x';
-  >> [x_aprox2, iter2] = sne_fd_4(funcion2, 3/4, 10^-5);
+  >> [x_aprox2, iter2] = sne_fd_4(funcion2, 3/4, 1, 10^-5);
   x_aprox2 = 1.3678
   iter2 = 2
 \end{lstlisting}
@@ -342,14 +342,14 @@ Esta función implementa el método mejorado de Müller y Bisección, el cual fu
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
-  >> [x_aprox1, iter1] = sne_fd_5(funcion1, 3/4, 10^-5);
+  >> [x_aprox1, iter1] = sne_fd_5(funcion1, 0, 5, 10^-5);
   x_aprox1 = 0.51493
-  iter1 = 2
+  iter1 = 7
 
-  >> funcion2 = 'exp(x) - x^3 - x';
-  >> [x_aprox2, iter2] = sne_fd_5(funcion2, 3/4, 10^-5);
-  x_aprox2 = 1.3678
-  iter2 = 2
+  >> funcion2 = 'exp(x) - x - 2';
+  >> [x_aprox2, iter2] = sne_fd_5(funcion2, 0, 5, 10^-5);
+  x_aprox2 = 1.1462
+  iter2 = 48
 \end{lstlisting}
 \end{minipage}
 
@@ -359,14 +359,14 @@ Esta función implementa el método paramétrico de Ostrowski-Chun, el cual fue 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
-  >> [x_aprox1, iter1] = sne_fd_6(funcion1, 3/4, 10^-5);
+  >> [x_aprox1, iter1] = sne_fd_6(funcion1, 3 / 4, 1, 2, 0.3, 2, 0.7, 10^-5, 0, 30);
   x_aprox1 = 0.51493
-  iter1 = 2
+  iter1 = 22
 
-  >> funcion2 = 'exp(x) - x^3 - x';
-  >> [x_aprox2, iter2] = sne_fd_6(funcion2, 3/4, 10^-5);
-  x_aprox2 = 1.3678
-  iter2 = 2
+  >> funcion2 = 'exp(x) - x - 2';
+  >> [x_aprox2, iter2] = sne_fd_6(funcion2, 3 / 4, 1, 2, 0.3, 2, 0.7, 10 ** -5, 0, 30);
+  x_aprox2 = 1.1462
+  iter2 = 7
 \end{lstlisting}
 \end{minipage}
 
