@@ -1,12 +1,10 @@
-pkg load symbolic
-
 % Metodo de Darvishi-Barati para encontrar el cero de una funcion
 % :param str_funcion: string con la funcion que se debe evaluar
 % :param xk: valor de x inicial con el cual aplicar el metodo
 % :param tol: tolerancia al fallo de debe tener el resultado final
 % :param graph: valor 0 para no graficar o 1 para graficar
 % :returns: xk calculado y numero iteraciones
-function [x_aprox, iter] = darvishi_barati(str_funcion, xk, tol, graph)
+function [x_aprox, iter] = sne_ud_4(str_funcion, xk, tol, graph)
     if nargin == 3  % Si el numero de argumento es igual a 3
         graph = 1   % Se declara con el valor por defecto
     end
@@ -89,12 +87,3 @@ function [x_aprox, iter] = darvishi_barati(str_funcion, xk, tol, graph)
     iter = itr
 
 end  % darvishi_barati(str_funcion, xk, tol, graph)
-
-
-%funcion1 = 'exp(2*x) - 10 - log(x/2)';
-%disp(funcion1);
-%[x_aprox1, iter1] = darvishi_barati(funcion1, 1, 10 ^ -5)
-
-%funcion2 = 'cos(2*x)^2 - x^2';
-%disp(funcion2);
-%[x_aprox2, iter2] = darvishi_barati(funcion2, 2 / 4, 10 ^ -5);

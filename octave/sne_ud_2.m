@@ -1,15 +1,10 @@
-%Carga del paquete simbólico
-pkg load symbolic
-
-
-function [x_aprox, iter] = chun_kim(func, xk, tol, graph)
-  % Metodo de Chun-Kim para encontrar el cero de una funcion
-  % :param func: string con la funcion que se debe evaluar
-  % :param xk: valor de x inicial con el cual aplicar el metodo
-  % :param tol: tolerancia al fallo de debe tener el resultado final
-  % :param graph: valor 0 para no graficar y 1 para graficar
-  % :returns: xk calculado y numero iteraciones
-  
+% Metodo de Chun-Kim para encontrar el cero de una funcion
+% :param func: string con la funcion que se debe evaluar
+% :param xk: valor de x inicial con el cual aplicar el metodo
+% :param tol: tolerancia al fallo de debe tener el resultado final
+% :param graph: valor 0 para no graficar y 1 para graficar
+% :returns: xk calculado y numero iteraciones
+function [x_aprox, iter] = sne_ud_2(func, xk, tol, graph)
   % Si el numero de argumento es igual a 3
   if nargin == 3
     % Se declara con el valor por defecto
@@ -18,35 +13,32 @@ function [x_aprox, iter] = chun_kim(func, xk, tol, graph)
   
   % Verificar el tipo de dato de func
   if ~isa(func, 'char')
-    disp("La funcion debe ser un string")
-    % Se finaliza la ejecucion
-    return
+    error("La funcion debe ser un string")
   endif
   
   % Verificar el tipo de dato de xk
   if ~isa(xk, 'double')
-    disp("El xk debe ser un numero")
-    % Se finaliza la ejecucion
-    return
+    error("El xk debe ser un numero")
   endif
 
   % Verificar el tipo de dato de tol
   if ~isa(tol, 'double')
-    disp("La tolerancia debe ser un numero")
-    % Se finaliza la ejecucion
-    return
+    error("La tolerancia debe ser un numero")
   endif
+
+      % Se verifica que la tolerancia sea un numero positivo
+    if tol < 0
+        error("tol debe ser un numero positivo")
+    end
 
   % Verificar que el valor de graph sea 0 o 1
   if graph ~= 1 && graph ~= 0
-    disp("El graph debe ser 0 (desactivado) o 1 (activado)")
-    % Se finaliza la ejecucion
-    return
+    error("El graph debe ser 0 (desactivado) o 1 (activado)")
   endif
   
-  % Variable que contiene la conversión de la ecuación simbólica
+  % Variable que contiene la conversiï¿½n de la ecuaciï¿½n simbï¿½lica
   ec = matlabFunction(sym(func))
-  % Variable que contiene la derivada de la función
+  % Variable que contiene la derivada de la funciï¿½n
   dec = matlabFunction(diff(sym(func)))
 
   % Listas donde se guardan los valores para graficar el error
@@ -57,7 +49,7 @@ function [x_aprox, iter] = chun_kim(func, xk, tol, graph)
   ite = 0
   
   while 1
-    % Variable que contiene la imagen de xk en la función
+    % Variable que contiene la imagen de xk en la funciï¿½n
     eval_ec = ec(xk)
     
     % Se guardan los valores para la grafica
@@ -66,29 +58,27 @@ function [x_aprox, iter] = chun_kim(func, xk, tol, graph)
       lista_iter = [lista_iter (ite)]
     endif
     
-    % Verificar la condición de parada si la imagen del xk es menor o
+    % Verificar la condiciï¿½n de parada si la imagen del xk es menor o
     % igual que la tolerancia
     if abs(eval_ec) <= tol
       break
-    % Si NO se cumple la condición de parada
+    % Si NO se cumple la condiciï¿½n de parada
     else
-      % Variable que contiene la imagen de xk en la derivada de la función
+      % Variable que contiene la imagen de xk en la derivada de la funciï¿½n
       eval_dec = dec(xk)
       % Verificar que la imagen anterior no indefina el resultado
       if eval_dec == 0
-        disp("La imagen de un xk en la derivada de la funcion se indefine")
-        % Se finaliza la ejecucion
-        return
+        error("La imagen de un xk en la derivada de la funcion se indefine")
       endif
       
       % Variable que contiene el resultado del metodo de Newton-Raphson
       nr = xk - (eval_ec / eval_dec)
-      % Variable que contiene la imagen del nr en la derivada de la función
+      % Variable que contiene la imagen del nr en la derivada de la funciï¿½n
       eval_dec2 = dec(nr)
         
-      % Se calcula el xk+1 para la siguiente iteración
+      % Se calcula el xk+1 para la siguiente iteraciï¿½n
       xk = xk - (1/2) * (3 - (eval_dec2 / eval_dec)) * (eval_ec / eval_dec)
-      % Se añade una iteración
+      % Se aï¿½ade una iteraciï¿½n
       ite = ite + 1
     endif
   endwhile
@@ -103,6 +93,6 @@ function [x_aprox, iter] = chun_kim(func, xk, tol, graph)
    
 endfunction
 
-%Ejemplo de prueba para el método de Chun-Kim
+%Ejemplo de prueba para el metodo de Chun-Kim
 g = '(cos(2*x))**2 - (x**2)'
-chun_kim(g, 3/4, 10**-5, 1)
+sne_ud_2(g, 3/4, 10**-5, 0)
