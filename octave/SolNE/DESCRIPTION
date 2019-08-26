@@ -1,0 +1,9 @@
+Name: The name of my package
+Version: 1.0.0
+Date: 2019-25-08
+Author: Arturo Córdoba, Fabián Gonzalez, Gustavo Segura, Joseph Vargas
+Maintainer: Arturo Córdoba, Fabián Gonzalez, Gustavo Segura, Joseph Vargas
+Title: SolNE
+Description: Paquete para obtener soluciones a ecuaciones no lineales
+License: MIT
+Depends: symbolic
