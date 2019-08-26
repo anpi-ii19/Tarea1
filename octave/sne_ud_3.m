@@ -1,15 +1,10 @@
-%Carga del paquete simbólico
-pkg load symbolic
-
-
-function [x_aprox, iter] = ozban_homeier(func, xk, tol, graph)
-  % Metodo de Ozban-Homeier para encontrar el cero de una funcion
-  % :param func: string con la funcion que se debe evaluar
-  % :param xk: valor de x inicial con el cual aplicar el metodo
-  % :param tol: tolerancia al fallo de debe tener el resultado final
-  % :param graph: valor 0 para no graficar y 1 para graficar
-  % :returns: xk calculado y numero iteraciones
-  
+% Metodo de Ozban-Homeier para encontrar el cero de una funcion
+% :param func: string con la funcion que se debe evaluar
+% :param xk: valor de x inicial con el cual aplicar el metodo
+% :param tol: tolerancia al fallo de debe tener el resultado final
+% :param graph: valor 0 para no graficar y 1 para graficar
+% :returns: xk calculado y numero iteraciones
+function [x_aprox, iter] = sne_ud_3(func, xk, tol, graph)
   % Si el numero de argumento es igual a 3
   if nargin == 3
     % Se declara con el valor por defecto
@@ -44,9 +39,9 @@ function [x_aprox, iter] = ozban_homeier(func, xk, tol, graph)
     return
   endif
   
-  % Variable que contiene la conversión de la ecuación simbólica
+  % Variable que contiene la conversiï¿½n de la ecuaciï¿½n simbï¿½lica
   ec = matlabFunction(sym(func))
-  % Variable que contiene la derivada de la función
+  % Variable que contiene la derivada de la funciï¿½n
   dec = matlabFunction(diff(sym(func)))
 
   % Listas donde se guardan los valores para graficar el error
@@ -57,7 +52,7 @@ function [x_aprox, iter] = ozban_homeier(func, xk, tol, graph)
   ite = 0
   
   while 1
-    % Variable que contiene la imagen de xk en la función
+    % Variable que contiene la imagen de xk en la funciï¿½n
     eval_ec = ec(xk)
     
     % Se guardan los valores para la grafica
@@ -66,13 +61,13 @@ function [x_aprox, iter] = ozban_homeier(func, xk, tol, graph)
       lista_iter = [lista_iter (ite)]
     endif
     
-    % Verificar la condición de parada si la imagen del xk es menor o
+    % Verificar la condiciï¿½n de parada si la imagen del xk es menor o
     % igual que la tolerancia
     if abs(eval_ec) <= tol
       break
-    % Si NO se cumple la condición de parada
+    % Si NO se cumple la condiciï¿½n de parada
     else
-      % Variable que contiene la imagen de xk en la derivada de la función
+      % Variable que contiene la imagen de xk en la derivada de la funciï¿½n
       eval_dec = dec(xk)
       % Verificar que la imagen anterior no indefina el resultado
       if eval_dec == 0
@@ -83,7 +78,7 @@ function [x_aprox, iter] = ozban_homeier(func, xk, tol, graph)
       
       % Variable que contiene el resultado del metodo de Newton-Raphson
       nr = xk - (eval_ec / eval_dec)
-      % Variable que contiene la imagen del nr en la derivada de la función
+      % Variable que contiene la imagen del nr en la derivada de la funciï¿½n
       eval_dec2 = dec(nr)
       % Verificar que la imagen anterior no indefina el resultado
       if eval_dec2 == 0
@@ -92,9 +87,9 @@ function [x_aprox, iter] = ozban_homeier(func, xk, tol, graph)
         return
       endif
         
-      % Se calcula el xk+1 para la siguiente iteración
+      % Se calcula el xk+1 para la siguiente iteraciï¿½n
       xk = xk - (1/2) * ((eval_ec / eval_dec) + (eval_ec / eval_dec2))
-      % Se añade una iteración
+      % Se aï¿½ade una iteraciï¿½n
       ite = ite + 1
     endif
   endwhile
@@ -110,6 +105,6 @@ function [x_aprox, iter] = ozban_homeier(func, xk, tol, graph)
     
 endfunction
 
-% Ejemplo de prueba para el método de Ozban-Homeier
+% Ejemplo de prueba para el metodo de Ozban-Homeier
 g = '(cos(2*x))**2 - (x**2)'
-ozban_homeier(g, 3/4, 10**-5, 1)
+sne_ud_3(g, 3/4, 10**-5, 1)
