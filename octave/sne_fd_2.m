@@ -1,17 +1,11 @@
-%Carga del paquete simbólico
-pkg load symbolic
-
-
-function [x_aprox, iter] = m8(func, xk, y, tol, graph)
-  % Metodo M8 para encontrar el cero de una funcion
-  % :param func: string con la funcion que se debe evaluar
-  % :param xk: valor de x inicial con el cual aplicar el metodo
-  % :param y: constante que es un numero real, excepto cero.
-  % :param tol: tolerancia al fallo de debe tener el resultado final
-  % :param graph: valor 0 para no graficar y 1 para graficar
-  % :returns: xk calculado y numero iteraciones
-
-  
+% Metodo M8 para encontrar el cero de una funcion
+% :param func: string con la funcion que se debe evaluar
+% :param xk: valor de x inicial con el cual aplicar el metodo
+% :param y: constante que es un numero real, excepto cero.
+% :param tol: tolerancia al fallo de debe tener el resultado final
+% :param graph: valor 0 para no graficar y 1 para graficar
+% :returns: xk calculado y numero iteraciones
+function [x_aprox, iter] = sne_fd_2(func, xk, y, tol, graph)
   % Si el numero de argumento es igual a 3
   if nargin == 3
     % Se declara con el valor por defecto
@@ -31,6 +25,11 @@ function [x_aprox, iter] = m8(func, xk, y, tol, graph)
     % Se finaliza la ejecucion
     return
   endif
+
+      % Se verifica que la tolerancia sea un numero positivo
+    if tol < 0
+        error("tol debe ser un numero positivo")
+    end
   
   % Verificar que y no sea cero
   if y == 0
@@ -141,7 +140,3 @@ function [x_aprox, iter] = m8(func, xk, y, tol, graph)
   iter = ite
     
 endfunction
-
-% Ejemplo de prueba para el método M8
-g = '(cos(2*x))**2 - (x**2)'
-m8(g, 3/4, 1, 10**-5, 1)

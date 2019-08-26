@@ -75,9 +75,16 @@ function [x_aprox, iter] = sne_ud_2(func, xk, tol, graph)
       nr = xk - (eval_ec / eval_dec)
       % Variable que contiene la imagen del nr en la derivada de la funci�n
       eval_dec2 = dec(nr)
-        
+
+      % Se verifica que el nuevo xk no se indefina
+        nuevo_xk = xk - (1/2) * (3 - (eval_dec2 / eval_dec)) * (eval_ec / eval_dec)
+        if isnan(nuevo_xk) || isinf(nuevo_xk)
+            error('Este metodo no es apto para la funcion ingresada')
+        end  % isnan(nuevo_xk) || isinf(nuevo_xk)
+
+
       % Se calcula el xk+1 para la siguiente iteraci�n
-      xk = xk - (1/2) * (3 - (eval_dec2 / eval_dec)) * (eval_ec / eval_dec)
+      xk = nuevo_xk
       % Se a�ade una iteraci�n
       ite = ite + 1
     endif
