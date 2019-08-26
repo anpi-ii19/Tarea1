@@ -13,30 +13,28 @@ function [x_aprox, iter] = sne_ud_3(func, xk, tol, graph)
   
   % Verificar el tipo de dato de func
   if ~isa(func, 'char')
-    disp("La funcion debe ser un string")
-    % Se finaliza la ejecucion
-    return
+    error("La funcion debe ser un string")
   endif
   
   % Verificar el tipo de dato de xk
   if ~isa(xk, 'double')
-    disp("El xk debe ser un numero")
-    % Se finaliza la ejecucion
-    return
+    error("El xk debe ser un numero")
   endif
 
   % Verificar el tipo de dato de tol
   if ~isa(tol, 'double')
-    disp("La tolerancia debe ser un numero")
-    % Se finaliza la ejecucion
-    return
+    error("La tolerancia debe ser un numero")
   endif
+
+      % Se verifica que la tolerancia sea un numero positivo
+    if tol < 0
+        error("tol debe ser un numero positivo")
+    end
+
 
   % Verificar que el valor de graph sea 0 o 1
   if graph ~= 1 && graph ~= 0
-    disp("El graph debe ser 0 (desactivado) o 1 (activado)")
-    % Se finaliza la ejecucion
-    return
+    error("El graph debe ser 0 (desactivado) o 1 (activado)")
   endif
   
   % Variable que contiene la conversi�n de la ecuaci�n simb�lica
@@ -71,9 +69,7 @@ function [x_aprox, iter] = sne_ud_3(func, xk, tol, graph)
       eval_dec = dec(xk)
       % Verificar que la imagen anterior no indefina el resultado
       if eval_dec == 0
-        disp("La imagen de un xk en la derivada de la funcion se indefine")
-        % Se finaliza la ejecucion
-        return
+        error("La imagen de un xk en la derivada de la funcion se indefine")
       endif
       
       % Variable que contiene el resultado del metodo de Newton-Raphson
@@ -82,9 +78,7 @@ function [x_aprox, iter] = sne_ud_3(func, xk, tol, graph)
       eval_dec2 = dec(nr)
       % Verificar que la imagen anterior no indefina el resultado
       if eval_dec2 == 0
-        disp("La imagen del Newton-Raphson en la derivada se indefine")
-        % Se finaliza la ejecucion
-        return
+        error("La imagen del Newton-Raphson en la derivada se indefine")
       endif
         
       % Se calcula el xk+1 para la siguiente iteraci�n
