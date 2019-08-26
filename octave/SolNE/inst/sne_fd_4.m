@@ -19,6 +19,11 @@ function [x_aprox, iter] = sne_fd_4(str_funcion, xk, y, tol, graph)
         error("xk debe ser un double, no %s", class(xk))
     end
 
+    % Se verifica el tipo de dato de y
+    if ~isa(y, 'double')
+        error("y debe ser un double, no %s", class(y))
+    end
+
     % Se verifica el tipo de dato de la tolerancia
     if ~isa(tol, 'double')
         error("tol debe ser un double, no un %s", class(tol))
@@ -40,7 +45,7 @@ function [x_aprox, iter] = sne_fd_4(str_funcion, xk, y, tol, graph)
         lista_fxk = [];
         lista_iter = [];
 
-        itr = 0;  % Se inicializa el contador de iteraciones
+        iter = 0;  % Se inicializa el contador de iteraciones
 
         while 1
             fxk = funcion(xk);  % Se evalua la funcion
@@ -48,7 +53,7 @@ function [x_aprox, iter] = sne_fd_4(str_funcion, xk, y, tol, graph)
             if graph == 1
                 % Se guardan los valores para la grafica
                 lista_fxk = [lista_fxk abs(fxk)]
-                lista_iter = [lista_iter (itr)]
+                lista_iter = [lista_iter (iter)]
             end  % graph == 1
 
             if abs(fxk) <= tol  % Se verifica la condicion de parada
@@ -63,7 +68,8 @@ function [x_aprox, iter] = sne_fd_4(str_funcion, xk, y, tol, graph)
                 y2 = ((xk - yk) / ((wk - yk) * y * fxk)) * fwk
                 y3 = ((wk + xk - 2*yk) / ((xk - yk) * (wk - yk))) * fyk
                 xk = yk - (fyk / (y1 - y2 - y3))
-                itr += 1
+                x_aprox=xk
+                iter += 1
 
             end  % abs(f(xk)) <= tol
 

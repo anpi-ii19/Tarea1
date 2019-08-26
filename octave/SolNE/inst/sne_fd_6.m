@@ -25,6 +25,25 @@
         error("xk debe ser un double, no %s", class(xk))
     end
 
+
+    % Se verifica el tipo de dato de a1
+    if ~isa(a1, 'double')
+        error("a1 debe ser un double, no %s", class(a1))
+    end
+    % Se verifica el tipo de dato de a2
+    if ~isa(a2, 'double')
+        error("a2 debe ser un double, no %s", class(a2))
+    end
+    % Se verifica el tipo de dato de b1
+    if ~isa(b1, 'double')
+        error("b1 debe ser un double, no %s", class(b1))
+    end
+    % Se verifica el tipo de dato de b2
+    if ~isa(b2, 'double')
+        error("b2 debe ser un double, no %s", class(b2))
+    end
+
+
     % Se verifica el tipo de dato de la tolerancia
     if ~isa(tol, 'double')
         error("tol debe ser un double, no un %s", class(tol))
@@ -46,7 +65,7 @@
         lista_fxk = [];
         lista_iter = [];
 
-        itr = 0;  % Se inicializa el contador de iteraciones
+        iter = 0;  % Se inicializa el contador de iteraciones
 
         w  = @(x1,x2) (f(x1)-f(x2))/(x1-x2);
         while 1
@@ -55,18 +74,18 @@
             if graph == 1
                 % Se guardan los valores para la grafica
                 lista_fxk = [lista_fxk abs(fxk)]
-                lista_iter = [lista_iter (itr)]
+                lista_iter = [lista_iter (iter)]
             end  % graph == 1
 
-            if abs(fxk) <= tol | itr >=max_iter  % Se verifica la condicion de parada
+            if abs(fxk) <= tol || iter >=max_iter  % Se verifica la condicion de parada
                 break;
 
             else
                 zk= xk+f(xk)**2
                 yk=xk-alpha*(f(xk)/w(zk,xk))
                 xk= yk - (f(yk)/w(zk,xk))*(  f(xk)/(a1*f(xk)+a2*f(yk)) +  (b1*f(xk)+b2*f(yk))/f(xk))
-                itr+=1
-
+                iter+=1
+                x_aprox=xk
             end  % abs(f(xk)) <= tol
 
         end  % while 1

@@ -5,7 +5,7 @@
 %     :param tol: tolerancia al fallo de debe tener el resultado final
 %     :param graph: valor 0 para no graficar o 1 para graficar
 %     :returns: lista con dos elementos, xk calculado y numero iteraciones
-function [x_aprox, iter] = sne_fd_5(str_funcion, xk, y, tol, graph)
+function [x_aprox, iter] = sne_fd_5(str_funcion, a,b, tol, graph)
     if nargin == 4  % Si el numero de argumentos es igual a 4
         graph = 1   % Se declara con el valor por defecto
     end
@@ -15,9 +15,14 @@ function [x_aprox, iter] = sne_fd_5(str_funcion, xk, y, tol, graph)
         error("str_funcion debe ser un char, no %s.", class(str_funcion))
     end
 
-    % Se verifica el tipo de dato de xk
-    if ~isa(xk, 'double')
-        error("xk debe ser un double, no %s", class(xk))
+    % Se verifica el tipo de dato de a
+    if ~isa(a, 'double')
+        error("a debe ser un double, no %s", class(a))
+    end
+
+    % Se verifica el tipo de dato de b
+    if ~isa(a, 'double')
+        error("b debe ser un double, no %s", class(b))
     end
 
     % Se verifica el tipo de dato de la tolerancia
@@ -41,7 +46,7 @@ function [x_aprox, iter] = sne_fd_5(str_funcion, xk, y, tol, graph)
         lista_fxk = [];
         lista_iter = [];
 
-        itr = 0;  % Se inicializa el contador de iteraciones
+        iter = 0;  % Se inicializa el contador de iteraciones
         c = a+(b-a)/2 # valor inicial de c (biseccion)
         xk=c
         while 1
@@ -50,7 +55,7 @@ function [x_aprox, iter] = sne_fd_5(str_funcion, xk, y, tol, graph)
             if graph == 1
                 % Se guardan los valores para la grafica
                 lista_fxk = [lista_fxk abs(fxk)]
-                lista_iter = [lista_iter (itr)]
+                lista_iter = [lista_iter (iter)]
             end  % graph == 1
 
             if abs(fxk) <= tol  % Se verifica la condicion de parada
@@ -64,14 +69,15 @@ function [x_aprox, iter] = sne_fd_5(str_funcion, xk, y, tol, graph)
                 else
                     c = a+(b-a)/2
                 end
-                itr += 1
+                iter += 1
                 xk=c
+                x_aprox=xk
             end
 
         end  % while 1
     end
 
-    
+
   %     Metodo auxiliar para resolver una ecuacion cuadratica (Muller)
   %     :param x0: numero real
   %     :param x1: numero real
@@ -97,8 +103,6 @@ function [x_aprox, iter] = sne_fd_5(str_funcion, xk, y, tol, graph)
     end
     x=x2 - (2*c)/(b+signb*(b**2-4*a*c)**(1/2))
   end
-
-
 
 
 
