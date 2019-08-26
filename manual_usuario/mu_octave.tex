@@ -149,13 +149,13 @@ Esta función implementa el método iterativo de Weerakoon-Fernando, el cual fue
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_1(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 2
 
   >> funcion2 = 'exp(x) - x^3 - x';
   >> [x_aprox2, iter2] = sne_ud_1(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.3678
+  iter2 = 4
 
 \end{lstlisting}
 \end{minipage}
@@ -167,13 +167,13 @@ Esta función implementa el método iterativo de Chun-Kim, el cual fue tomado de
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_2(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 2
 
-  >> funcion2 = 'exp(x) - x^3 - x';
+  >> funcion2 = 'exp(x) - x - 2';
   >> [x_aprox2, iter2] = sne_ud_2(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.1462
+  iter2 = 4
 
 \end{lstlisting}
 \end{minipage}
@@ -185,13 +185,13 @@ Esta función implementa el método iterativo de Özban-Homeier, el cual fue tom
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_3(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 3
 
   >> funcion2 = 'exp(x) - x^3 - x';
   >> [x_aprox2, iter2] = sne_ud_3(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.3678
+  iter2 = 3
 
 \end{lstlisting}
 \end{minipage}
@@ -203,13 +203,13 @@ Esta función implementa el método iterativo de Darvishi-Barati, el cual fue to
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_4(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 3
 
-  >> funcion2 = 'exp(x) - x^3 - x';
+  >> funcion2 = 'exp(x) - x - 2';
   >> [x_aprox2, iter2] = sne_ud_4(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.1462
+  iter2 = 3
 
 \end{lstlisting}
 \end{minipage}
@@ -221,13 +221,13 @@ Esta función implementa el método de Ostrowski de cuarto orden, el cual fue to
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_5(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 2
 
   >> funcion2 = 'exp(x) - x^3 - x';
   >> [x_aprox2, iter2] = sne_ud_5(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.1462
+  iter2 = 3
 
 \end{lstlisting}
 \end{minipage}
@@ -239,13 +239,13 @@ Esta función implementa el método de Traub, el cual fue tomado de \cite{budzko
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_ud_6(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 3
 
-  >> funcion2 = 'exp(x) - x^3 - x';
+  >> funcion2 = 'exp(x) - x - 2';
   >> [x_aprox2, iter2] = sne_ud_6(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox1 = 0.51493
+  iter1 = 3
 
 \end{lstlisting}
 \end{minipage}
@@ -257,13 +257,13 @@ Esta función implementa el método iterativo de Steffensen, el cual fue tomado 
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_fd_1(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 3
 
   >> funcion2 = 'exp(x) - x^3 - x';
   >> [x_aprox2, iter2] = sne_fd_1(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.3678
+  iter2 = 4
 
 \end{lstlisting}
 \end{minipage}
@@ -274,14 +274,14 @@ Esta función implementa el método iterativo M8, el cual fue tomado de \cite{ba
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
-  >> [x_aprox1, iter1] = sne_fd_2(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  >> [x_aprox1, iter1] = sne_fd_2(funcion1, 3/4, 1, 10^-5);
+  x_aprox1 = 0.51493
+  iter1 = 2
 
   >> funcion2 = 'exp(x) - x^3 - x';
-  >> [x_aprox2, iter2] = sne_fd_2(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  >> [x_aprox2, iter2] = sne_fd_2(funcion2, 3/4, 1, 10^-5);
+  x_aprox2 = 1.3678
+  iter2 = 2
 
 \end{lstlisting}
 \end{minipage}
@@ -293,13 +293,13 @@ Esta función implementa el método IODF \textit{(Improved Ostrowski's method fr
 \begin{lstlisting}[frame = single]
   >> funcion1 = 'cos(2 * x)^2 - x^2';
   >> [x_aprox1, iter1] = sne_fd_3(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
+  x_aprox1 = 0.51493
+  iter1 = 2
 
   >> funcion2 = 'exp(x) - x^3 - x';
   >> [x_aprox2, iter2] = sne_fd_3(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
+  x_aprox2 = 1.3678
+  iter2 = 2
 
 \end{lstlisting}
 \end{minipage}
@@ -309,19 +309,3 @@ Esta función implementa el método IODF \textit{(Improved Ostrowski's method fr
 \nocite{*}
 \bibliography{biblio}
 \end{document}
-
-
-\begin{minipage}{\linewidth}
-\begin{lstlisting}[frame = single]
-  >> funcion1 = 'cos(2 * x)^2 - x^2';
-  >> [x_aprox1, iter1] = sne_fd_1(funcion1, 3/4, 10^-5);
-  x_aprox1 = 
-  iter1 = 
-
-  >> funcion2 = 'exp(x) - x^3 - x';
-  >> [x_aprox2, iter2] = sne_fd_1(funcion2, 3/4, 10^-5);
-  x_aprox2 = 
-  iter2 = 
-
-\end{lstlisting}
-\end{minipage}
